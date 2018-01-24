@@ -4,6 +4,7 @@
 
 <img src="https://user-images.githubusercontent.com/22609465/35317676-8471505a-009d-11e8-8453-e0c1efd3fec4.png" width="210"/> <img src="https://user-images.githubusercontent.com/22609465/35317677-847d2876-009d-11e8-9110-e26b01f46e87.png" width="210"/>
 <img src="https://user-images.githubusercontent.com/22609465/35317678-848aa3fc-009d-11e8-84a5-01be01a31fc6.png" width="210"/> <img src="https://user-images.githubusercontent.com/22609465/35317679-8496ab84-009d-11e8-945c-e1f957b04288.png" width="210"/>
+
 Example inpainting results of our method on images of natural scene, face and texture. Missing regions are shown in white. In each pair, the left is input image and right is the direct output of our trained generative neural networks without any post-processing.
 
 **Code and models will be released soon. Please stay tuned.**
