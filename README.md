@@ -1,6 +1,6 @@
 # Generative Image Inpainting with Contextual Attention
 
-[Paper](http://jhyu.me/resources/publications/yu2018-generative-inpainting-paper.pdf) | [arXiv](https://arxiv.org/abs/1801.07892) | [Project](http://jhyu.me/blogs/2018/01/20/generative-inpainting.html)
+[Paper](http://jhyu.me/resources/publications/yu2018-generative-inpainting-paper.pdf) | [arXiv](https://arxiv.org/abs/1801.07892) | [Project](http://jhyu.me/posts/2018/01/20/generative-inpainting.html)
 
 
 
