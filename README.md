@@ -1,6 +1,6 @@
 # Generative Image Inpainting with Contextual Attention
 
-[Paper](http://jhyu.me/resources/publications/yu2018-generative-inpainting-paper.pdf) | [arXiv](https://arxiv.org/abs/1801.07892) | [Project](http://jhyu.me/posts/2018/01/20/generative-inpainting.html) | [Demo](http://jhyu.me/posts/2018/01/20/generative-inpainting.html#post)
+[Paper](http://jhyu.me/resources/publications/yu2018-generative-inpainting-paper.pdf) | [ArXiv](https://arxiv.org/abs/1801.07892) | [Project](http://jhyu.me/posts/2018/01/20/generative-inpainting.html) | [Demo](http://jhyu.me/posts/2018/01/20/generative-inpainting.html#post)
 
 
 
@@ -12,6 +12,22 @@
 Example inpainting results of our method on images of natural scene (Places2), face (CelebA) and object (ImageNet). Missing regions are shown in white. In each pair, the left is input image and right is the direct output of our trained generative neural networks without any post-processing.
 
 **Code and models will be released soon. Please stay tuned.**
+
+
+## TensorBoard
+
+Visualization on TensorBoard for training and validation is supported.
+
+
+## License
+
+CC 4.0 Attribution-NonCommercial International
+
+
+## Requirements
+
+* [NeuralGym 0.0.1-alpha](https://github.com/JiahuiYu/neuralgym)
+* [TensorFlow >= 1.4](https://www.tensorflow.org/)
 
 
 FAQ
