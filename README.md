@@ -11,12 +11,13 @@
 
 Example inpainting results of our method on images of natural scene (Places2), face (CelebA) and object (ImageNet). Missing regions are shown in white. In each pair, the left is input image and right is the direct output of our trained generative neural networks without any post-processing.
 
-**Code and models will be released soon. Please stay tuned.**
+**Training/testing code and models will be released soon. Please stay tuned.**
 
 
 ## TensorBoard
 
 Visualization on TensorBoard for training and validation is supported.
+<img src="https://user-images.githubusercontent.com/22609465/36500932-4473eeac-170b-11e8-8975-c5d3c2dd1ef0.png" width="425"/> <img src="https://user-images.githubusercontent.com/22609465/36500933-4484a8e6-170b-11e8-8fe7-0cf753c6f968.png" width="425"/>
 
 
 ## License
@@ -28,6 +29,7 @@ CC 4.0 Attribution-NonCommercial International
 
 * [NeuralGym 0.0.1-alpha](https://github.com/JiahuiYu/neuralgym)
 * [TensorFlow >= 1.4](https://www.tensorflow.org/)
+
 
 
 FAQ
@@ -52,3 +54,14 @@ Please check out function `random_bbox` and `bbox2mask` in file [inpaint_ops.py]
 * Parameters to handle the memory overhead.
 
 Please check out function `contextual_attention` in file [inpaint_ops.py](/inpaint_ops.py).
+
+
+## Citing
+```
+@article{yu2018generative,
+  title={Generative Image Inpainting with Contextual Attention},
+  author={Yu, Jiahui and Lin, Zhe and Yang, Jimei and Shen, Xiaohui and Lu, Xin and Huang, Thomas S},
+  journal={arXiv preprint arXiv:1801.07892},
+  year={2018}
+}
+```
