@@ -17,7 +17,6 @@ Example inpainting results of our method on images of natural scene (Places2), f
 ## TensorBoard
 
 Visualization on TensorBoard for training and validation is supported.
-<img src="https://user-images.githubusercontent.com/22609465/36500932-4473eeac-170b-11e8-8975-c5d3c2dd1ef0.png" width="425"/> <img src="https://user-images.githubusercontent.com/22609465/36500933-4484a8e6-170b-11e8-8fe7-0cf753c6f968.png" width="425"/>
 
 
 ## License
