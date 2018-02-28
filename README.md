@@ -1,14 +1,12 @@
 # Generative Image Inpainting with Contextual Attention
 
-[Paper](http://jhyu.me/resources/publications/yu2018-generative-inpainting-paper.pdf) | [ArXiv](https://arxiv.org/abs/1801.07892) | [Project](http://jhyu.me/posts/2018/01/20/generative-inpainting.html) | [Demo](http://jhyu.me/posts/2018/01/20/generative-inpainting.html#post)
+[CVPR 2018 Paper](http://jhyu.me/resources/publications/yu2018-generative-inpainting-paper.pdf) | [ArXiv](https://arxiv.org/abs/1801.07892) | [Project](http://jhyu.me/posts/2018/01/20/generative-inpainting.html) | [Demo](http://jhyu.me/posts/2018/01/20/generative-inpainting.html#post)
 
 <img src="https://user-images.githubusercontent.com/22609465/35317673-845730e4-009d-11e8-920e-62ea0a25f776.png" width="425"/> <img src="https://user-images.githubusercontent.com/22609465/35317674-846418ea-009d-11e8-90c7-652e32cef798.png" width="425"/>
 <img src="https://user-images.githubusercontent.com/22609465/35317678-848aa3fc-009d-11e8-84a5-01be01a31fc6.png" width="210"/> <img src="https://user-images.githubusercontent.com/22609465/35317679-8496ab84-009d-11e8-945c-e1f957b04288.png" width="210"/>
 <img src="https://user-images.githubusercontent.com/22609465/35347783-c5e948fe-00fb-11e8-819c-8212d4edcfd3.png" width="210"/> <img src="https://user-images.githubusercontent.com/22609465/35347784-c5f4242c-00fb-11e8-8e46-5ad224e15096.png" width="210"/>
 
 Example inpainting results of our method on images of natural scene (Places2), face (CelebA) and object (ImageNet). Missing regions are shown in white. In each pair, the left is input image and right is the direct output of our trained generative neural networks without any post-processing.
-
-**Training/testing code and models will be released soon. Please stay tuned.**
 
 ## Run train/test
 
@@ -20,23 +18,23 @@ Example inpainting results of our method on images of natural scene (Places2), f
 * Resume training:
   * Modify `MODEL_RESTORE` flag in [inpaint.yml](/inpaint.yml). E.g., `MODEL_RESTORE: '20180115220926508503_places2_model'`
   * Run `python train.py`.
-* Run testing: `python test.py --image examples/input.png --mask examples/mask.png --checkpoint model_logs/your_model_dir`.
+* Run testing: `python test.py --image examples/input.png --mask examples/mask.png --output examples/output.png --checkpoint model_logs/your_model_dir`.
 
 ## Pretrained models
 
-[Places2]() | [CelebA]() | [CelebA-HQ]() | [ImageNet]()
+[Places2](https://drive.google.com/open?id=1M3AFy7x9DqXaI-fINSynW7FJSXYROfv-) | [CelebA](https://drive.google.com/open?id=1sP8ViF3mxUMN--xpKqonEeW9d8S8pJEo) | [ImageNet](https://drive.google.com/open?id=136APWSdPRAF7-XoS8sMBTLV-X3f-ogE0)
 
 Download the model dirs and put it under `model_logs/`. Run testing or resume training as described above. All models are trained with images of resolution 256x256 and largest hole size 128x128, above which the results may be deteriorated. We provide several example test cases. Please run:
 
 ```bash
 # Places2 512x680 input
-python test.py --image examples/input.png --mask examples/mask.png --checkpoint model_logs/your_model_dir
+python test.py --image examples/places2/wooden_input.png --mask examples/places2/wooden_mask.png --output examples/output.png --checkpoint_dir model_logs/release_places2_256
 # CelebA 256x256 input
-python test.py --image examples/input.png --mask examples/mask.png --checkpoint model_logs/your_model_dir
+python test.py --image examples/celeba/celebahr_patches_164036_input.png --mask examples/center_mask_256.png --output examples/output.png --checkpoint_dir model_logs/release_celeba_256/
 # CelebA-HQ 256x256 input
-python test.py --image examples/input.png --mask examples/mask.png --checkpoint model_logs/your_model_dir
+# Please visit CelebA-HQ demo at: jhyu.me/demo
 # ImageNet 256x256 input
-python test.py --image examples/input.png --mask examples/mask.png --checkpoint model_logs/your_model_dir
+python test.py --image examples/imagenet/imagenet_patches_ILSVRC2012_val_00000827_input.png --mask examples/center_mask_256.png --output examples/output.png --checkpoint_dir model_logs/release_imagenet_256
 ```
 
 ## TensorBoard
