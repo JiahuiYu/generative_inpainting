@@ -10,7 +10,7 @@ Example inpainting results of our method on images of natural scene (Places2), f
 
 ## Run train/test
 
-* Install [tensorflow](https://www.tensorflow.org/install/) and tensorflow toolkit [neuralgym](https://github.com/JiahuiYu/neuralgym) (`pip install git+https://github.com/JiahuiYu/neuralgym`).  
+* Install python3, [tensorflow](https://www.tensorflow.org/install/) and tensorflow toolkit [neuralgym](https://github.com/JiahuiYu/neuralgym) (`pip install git+https://github.com/JiahuiYu/neuralgym`).
 * Training:
   * Prepare training images filelist.
   * Modify [inpaint.yml](/inpaint.yml) to set `DATA_FLIST`, `LOG_DIR`, `IMG_SHAPES` and other parameters.
@@ -22,9 +22,9 @@ Example inpainting results of our method on images of natural scene (Places2), f
 
 ## Pretrained models
 
-[Places2](https://drive.google.com/open?id=1M3AFy7x9DqXaI-fINSynW7FJSXYROfv-) | [CelebA](https://drive.google.com/open?id=1sP8ViF3mxUMN--xpKqonEeW9d8S8pJEo) | [ImageNet](https://drive.google.com/open?id=136APWSdPRAF7-XoS8sMBTLV-X3f-ogE0)
+[Places2](https://drive.google.com/open?id=1M3AFy7x9DqXaI-fINSynW7FJSXYROfv-) | [CelebA](https://drive.google.com/open?id=1sP8ViF3mxUMN--xpKqonEeW9d8S8pJEo) | [ImageNet](https://drive.google.com/open?id=136APWSdPRAF7-XoS8sMBTLV-X3f-ogE0) | [CelebA-HQ releasing soon]()
 
-Download the model dirs and put it under `model_logs/`. Run testing or resume training as described above. All models are trained with images of resolution 256x256 and largest hole size 128x128, above which the results may be deteriorated. We provide several example test cases. Please run:
+Download the model dirs and put it under `model_logs/` (rename `checkpoint.txt` to `checkpoint` because google drive automatically rename it after download). Run testing or resume training as described above. All models are trained with images of resolution 256x256 and largest hole size 128x128, above which the results may be deteriorated. We provide several example test cases. Please run:
 
 ```bash
 # Places2 512x680 input
