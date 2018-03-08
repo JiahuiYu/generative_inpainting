@@ -20,6 +20,7 @@ parser.add_argument('--checkpoint_dir', default='', type=str,
 
 
 if __name__ == "__main__":
+    ng.get_gpus(1)
     args = parser.parse_args()
 
     model = InpaintCAModel()
@@ -29,7 +30,7 @@ if __name__ == "__main__":
     assert image.shape == mask.shape
 
     h, w, _ = image.shape
-    grid = 4
+    grid = 8
     image = image[:h//grid*grid, :w//grid*grid, :]
     mask = mask[:h//grid*grid, :w//grid*grid, :]
     print('Shape of image: {}'.format(image.shape))
