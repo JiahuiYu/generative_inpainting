@@ -54,9 +54,7 @@ if __name__ == "__main__":
             static_fnames = val_fnames[i:i+1]
             static_images = ng.data.DataFromFNames(
                 static_fnames, config.IMG_SHAPES, nthreads=1,
-                random_crop=config.RANDOM_CROP,
-                fn_preprocess=edge_fn,
-            ).data_pipeline(1)
+                random_crop=config.RANDOM_CROP).data_pipeline(1)
             static_inpainted_images = model.build_static_infer_graph(
                 static_images, config, name='static_view/%d' % i)
     # training settings
