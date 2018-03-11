@@ -297,7 +297,7 @@ class InpaintCAModel(Model):
         """
         # generate mask, 1 represents masked point
         batch_raw, masks_raw = tf.split(batch_data, 2, axis=2)
-        masks = tf.cast(masks_raw[:, :, :, 0:1] > 127.5, tf.float32)
+        masks = tf.cast(masks_raw[0:1, :, :, 0:1] > 127.5, tf.float32)
 
         batch_pos = batch_raw / 127.5 - 1.
         batch_incomplete = batch_pos * (1. - masks)
