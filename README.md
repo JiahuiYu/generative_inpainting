@@ -8,17 +8,21 @@
 
 Example inpainting results of our method on images of natural scene (Places2), face (CelebA) and object (ImageNet). Missing regions are shown in white. In each pair, the left is input image and right is the direct output of our trained generative neural networks without any post-processing.
 
-## Run train/test
+## Run
 
-* Install python3, [tensorflow](https://www.tensorflow.org/install/) and tensorflow toolkit [neuralgym](https://github.com/JiahuiYu/neuralgym) (`pip install git+https://github.com/JiahuiYu/neuralgym`).
-* Training:
-  * Prepare training images filelist.
-  * Modify [inpaint.yml](/inpaint.yml) to set `DATA_FLIST`, `LOG_DIR`, `IMG_SHAPES` and other parameters.
-  * Run `python train.py`.
-* Resume training:
-  * Modify `MODEL_RESTORE` flag in [inpaint.yml](/inpaint.yml). E.g., `MODEL_RESTORE: '20180115220926508503_places2_model'`
-  * Run `python train.py`.
-* Run testing: `python test.py --image examples/input.png --mask examples/mask.png --output examples/output.png --checkpoint model_logs/your_model_dir`.
+0. Requirements:
+    * Install python3.
+    * Install [tensorflow](https://www.tensorflow.org/install/) (tested on Release 1.3.0, 1.4.0, 1.5.0, 1.6.0, 1.7.0).
+    * Install tensorflow toolkit [neuralgym](https://github.com/JiahuiYu/neuralgym) (run `pip install git+https://github.com/JiahuiYu/neuralgym`).
+1. Training:
+    * Prepare training images filelist.
+    * Modify [inpaint.yml](/inpaint.yml) to set DATA_FLIST, LOG_DIR, IMG_SHAPES and other parameters.
+    * Run `python train.py`.
+2. Resume training:
+    * Modify MODEL_RESTORE flag in [inpaint.yml](/inpaint.yml). E.g., MODEL_RESTORE: 20180115220926508503_places2_model.
+    * Run `python train.py`.
+3. Testing:
+    * Run `python test.py --image examples/input.png --mask examples/mask.png --output examples/output.png --checkpoint model_logs/your_model_dir`.
 
 ## Pretrained models
 
