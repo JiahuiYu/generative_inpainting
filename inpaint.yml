@@ -33,22 +33,22 @@ DATA_FLIST:
   # https://github.com/JiahuiYu/progressive_growing_of_gans_tf
   celebahq: [
     'data/celeba_hq/train_shuffled.flist',
-    'data/celeba_hq/train_shuffled.flist'
+    'data/celeba_hq/validation_static_view.flist'
   ]
   # http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html, please to use RANDOM_CROP: True
   celeba: [
     'data/celeba/train_shuffled.flist',
-    'data/celeba/train_shuffled.flist'
+    'data/celeba/validation_static_view.flist'
   ]
   # http://places2.csail.mit.edu/, please download the high-resolution dataset and use RANDOM_CROP: True
   places2: [
     'data/places2/train_shuffled.flist',
-    'data/places2/static_view.flist'
+    'data/places2/validation_static_view.flist'
   ]
   # http://www.image-net.org/, please use RANDOM_CROP: True
   imagenet: [
     'data/imagenet/train_shuffled.flist',
-    'data/imagenet/static_view.flist',
+    'data/imagenet/validation_static_view.flist',
   ]
 
 STATIC_VIEW_SIZE: 30
