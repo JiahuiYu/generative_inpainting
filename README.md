@@ -23,6 +23,8 @@ Example inpainting results of our method on images of natural scene (Places2), f
     * Run `python train.py`.
 3. Testing:
     * Run `python test.py --image examples/input.png --mask examples/mask.png --output examples/output.png --checkpoint model_logs/your_model_dir`.
+4. Still have questions?
+    * If you still have questions (e.g.: How filelist looks like? How to use multi-gpus? How to do batch testing?), please first search over closed issues. If the problem is not solved, please open a new issue.
 
 ## Pretrained models
 
