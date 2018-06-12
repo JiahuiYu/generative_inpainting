@@ -1,6 +1,12 @@
 # Generative Image Inpainting with Contextual Attention
 
-[CVPR 2018 Paper](https://arxiv.org/abs/1801.07892) | [ArXiv](https://arxiv.org/abs/1801.07892) | [Project](http://jiahuiyu.com/deepfill) | [Demo](http://jiahuiyu.com/deepfill) | [BibTex](#citing)
+[CVPR 2018 Paper](https://arxiv.org/abs/1801.07892) | [ArXiv](https://arxiv.org/abs/1801.07892) | [Project](http://jiahuiyu.com/deepfill) | [Demo](http://jiahuiyu.com/deepfill) | [YouTube](https://youtu.be/xz1ZvcdhgQ0) | [BibTex](#citing)
+
+**Update (Jun, 2018)**:
+1. The tech report of our new image inpainting system DeepFillv2 is released. [ArXiv](http://arxiv.org/abs/1806.03589) | [Project](http://jiahuiyu.com/deepfill2)
+2. We also released recorded demo video [YouTube](https://youtu.be/xz1ZvcdhgQ0) based on DeepFillv1 (CVPR 2018), as well as video [YouTube](https://youtu.be/uZkEi9Y2dj4) of DeepFillv2. Best viewed with highest resolution 1080p.
+3. DeepFillv1 is trained and mainly works on rectangular masks, while DeepFillv2 can complete images on free-form masks with user guidance as an option.
+
 
 <img src="https://user-images.githubusercontent.com/22609465/35317673-845730e4-009d-11e8-920e-62ea0a25f776.png" width="425"/> <img src="https://user-images.githubusercontent.com/22609465/35317674-846418ea-009d-11e8-90c7-652e32cef798.png" width="425"/>
 <img src="https://user-images.githubusercontent.com/22609465/35317678-848aa3fc-009d-11e8-84a5-01be01a31fc6.png" width="210"/> <img src="https://user-images.githubusercontent.com/22609465/35317679-8496ab84-009d-11e8-945c-e1f957b04288.png" width="210"/>
