@@ -103,4 +103,11 @@ python inpaint_ops.py --imageA examples/style_transfer/bnw_butterfly.png  --imag
   journal={arXiv preprint arXiv:1801.07892},
   year={2018}
 }
+
+@article{yu2018free,
+  title={Free-Form Image Inpainting with Gated Convolution},
+  author={Yu, Jiahui and Lin, Zhe and Yang, Jimei and Shen, Xiaohui and Lu, Xin and Huang, Thomas S},
+  journal={arXiv preprint arXiv:1806.03589},
+  year={2018}
+}
 ```
