@@ -1,8 +1,6 @@
 """ common model for DCGAN """
 import logging
 
-import cv2
-import neuralgym as ng
 import tensorflow as tf
 from tensorflow.contrib.framework.python.ops import arg_scope
 
@@ -17,9 +15,6 @@ from inpaint_ops import gen_conv, gen_deconv, dis_conv
 from inpaint_ops import random_bbox, bbox2mask, local_patch
 from inpaint_ops import spatial_discounting_mask
 from inpaint_ops import resize_mask_like, contextual_attention
-
-
-logger = logging.getLogger()
 
 
 class InpaintCAModel(Model):
@@ -98,6 +93,8 @@ class InpaintCAModel(Model):
             x = gen_conv(x, 4*cnum, 3, 1, name='pmconv9')
             x = gen_conv(x, 4*cnum, 3, 1, name='pmconv10')
             pm = x
+            # pm = tf.zeros([1, 64, 64, 128])
+            # x_hallu, pm: 1x64x64x128
             x = tf.concat([x_hallu, pm], axis=3)
 
             x = gen_conv(x, 4*cnum, 3, 1, name='allconv11')

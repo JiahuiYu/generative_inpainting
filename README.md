@@ -111,3 +111,10 @@ python inpaint_ops.py --imageA examples/style_transfer/bnw_butterfly.png  --imag
   year={2018}
 }
 ```
+
+## Pytorch support
+
+0. Requirements:
+    * Install pytorch version 0.3.1 (not 0.4.0 or above)
+1. Testing:
+    * python ./test_pytorch.py
