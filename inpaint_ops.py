@@ -248,8 +248,7 @@ def contextual_attention(f, b, mask=None, ksize=3, stride=1, rate=1,
     # background for matching and use original background for reconstruction.
     f = resize(f, scale=1./rate, func=tf.image.resize_nearest_neighbor)
     b = resize(b, to_shape=[int(raw_int_bs[1]/rate), int(raw_int_bs[2]/rate)], func=tf.image.resize_nearest_neighbor)  # https://github.com/tensorflow/tensorflow/issues/11651
-    if mask is not None:
-        mask = resize(mask, scale=1./rate, func=tf.image.resize_nearest_neighbor)
+
     fs = tf.shape(f)
     int_fs = f.get_shape().as_list()
     f_groups = tf.split(f, int_fs[0], axis=0)
@@ -260,26 +259,33 @@ def contextual_attention(f, b, mask=None, ksize=3, stride=1, rate=1,
         b, [1,ksize,ksize,1], [1,stride,stride,1], [1,1,1,1], padding='SAME')
     w = tf.reshape(w, [int_fs[0], -1, ksize, ksize, int_fs[3]])
     w = tf.transpose(w, [0, 2, 3, 4, 1])  # transpose to b*k*k*c*hw
+
     # process mask
     if mask is None:
         mask = tf.zeros([1, bs[1], bs[2], 1])
-    m = tf.extract_image_patches(
+    else:
+        mask = resize(mask, scale=1./rate, func=tf.image.resize_nearest_neighbor)
+
+    m_patches = tf.extract_image_patches(
         mask, [1,ksize,ksize,1], [1,stride,stride,1], [1,1,1,1], padding='SAME')
-    m = tf.reshape(m, [1, -1, ksize, ksize, 1])
-    m = tf.transpose(m, [0, 2, 3, 4, 1])  # transpose to b*k*k*c*hw
-    m = m[0]
-    mm = tf.cast(tf.equal(tf.reduce_mean(m, axis=[0,1,2], keep_dims=True), 0.), tf.float32)
-    w_groups = tf.split(w, int_bs[0], axis=0)
+    m_patches = tf.reshape(m_patches, [m_patches.shape[0], -1, ksize, ksize, 1])
+    m_patches = tf.transpose(m_patches, [0, 2, 3, 4, 1])  # transpose to b*k*k*c*hw
+    m_patches = tf.cast(tf.equal(tf.reduce_mean(m_patches, axis=[1, 2, 3], keep_dims=True), 0.), tf.float32)
+
+    w_norm = w / tf.maximum(tf.sqrt(tf.reduce_sum(tf.square(w), axis=[1, 2, 3], keep_dims=True)), 1e-4)
+    w_norm_groups = tf.split(w_norm, int_bs[0], axis=0)
     raw_w_groups = tf.split(raw_w, int_bs[0], axis=0)
     y = []
     offsets = []
     k = fuse_k
     scale = softmax_scale
     fuse_weight = tf.reshape(tf.eye(k), [k, k, 1, 1])
-    for xi, wi, raw_wi in zip(f_groups, w_groups, raw_w_groups):
+
+    for i, (xi, wi_normed, raw_wi) in enumerate(zip(f_groups, w_norm_groups, raw_w_groups)):
+        mm = m_patches[i]
+
         # conv for compare
-        wi = wi[0]
-        wi_normed = wi / tf.maximum(tf.sqrt(tf.reduce_sum(tf.square(wi), axis=[0,1,2])), 1e-4)
+        wi_normed = wi_normed[0]
         yi = tf.nn.conv2d(xi, wi_normed, strides=[1,1,1,1], padding="SAME")
 
         # conv implementation for fuse scores to encourage large patches
@@ -304,7 +310,8 @@ def contextual_attention(f, b, mask=None, ksize=3, stride=1, rate=1,
         # deconv for patch pasting
         # 3.1 paste center
         wi_center = raw_wi[0]
-        yi = tf.nn.conv2d_transpose(yi, wi_center, tf.concat([[1], raw_fs[1:]], axis=0), strides=[1,rate,rate,1]) / 4.
+        yi = tf.nn.conv2d_transpose(yi, wi_center, tf.concat([[1], raw_fs[1:]], axis=0),
+                                    strides=[1,rate,rate,1]) / 4.
         y.append(yi)
         offsets.append(offset)
     y = tf.concat(y, axis=0)
