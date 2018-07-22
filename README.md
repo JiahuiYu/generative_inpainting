@@ -21,7 +21,7 @@ Example inpainting results of our method on images of natural scene (Places2), f
     * Install [tensorflow](https://www.tensorflow.org/install/) (tested on Release 1.3.0, 1.4.0, 1.5.0, 1.6.0, 1.7.0).
     * Install tensorflow toolkit [neuralgym](https://github.com/JiahuiYu/neuralgym) (run `pip install git+https://github.com/JiahuiYu/neuralgym`).
 1. Training:
-    * Prepare training images filelist ([example](https://github.com/JiahuiYu/generative_inpainting/issues/15)). 
+    * Prepare training images filelist and shuffle it ([example](https://github.com/JiahuiYu/generative_inpainting/issues/15)). 
     * Modify [inpaint.yml](/inpaint.yml) to set DATA_FLIST, LOG_DIR, IMG_SHAPES and other parameters.
     * Run `python train.py`.
 2. Resume training:
