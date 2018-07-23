@@ -1,19 +1,14 @@
-import argparse
+import time
 
-import cv2
 import numpy as np
 import tensorflow as tf
-
-from exp.vbd_imagenet.generative_inpainting.inpaint_model import InpaintCAModel
 import torch
-from exp.loaddata_utils import ImageNetLoadClass
-from exp.utils_visualise import save_figs
+from inpaint_model import InpaintCAModel
 from torch.autograd import Variable
-import time
 
 
 class CAInpainter(object):
-    def __init__(self, batch_size, checkpoint_dir, gpu_id=None):
+    def __init__(self, batch_size, checkpoint_dir):
         model = InpaintCAModel()
 
         self.images_ph = tf.placeholder(tf.float32,
@@ -115,37 +110,3 @@ class CAInpainter(object):
 
     def __del__(self):
         self.sess.close()
-
-
-if __name__ == '__main__':
-    # args = parser.parse_args()
-    # cv2.imwrite(args.output, result[0][:, :, ::-1])
-
-    # Load data
-    batch = 1
-    ca_inpainter = CAInpainter(
-        batch_size=batch, checkpoint_dir='model_logs/release_imagenet_256/')
-
-    load_helper = ImageNetLoadClass(imagenet_folder='../../imagenet')
-    images = []
-    for i in range(batch):
-        image, _ = load_helper.img_folder[i]
-        image = image.unsqueeze(0)
-        images.append(image)
-    images = torch.cat(images, dim=0)
-
-    # mask = (torch.rand(batch, 1, 28, 28) + 0.25).round()
-    # upsample = torch.nn.Upsample(size=(224, 224), mode='bilinear')
-    # mask = upsample(Variable(mask)).data.round()
-
-    mask = torch.ones(batch, 1, 224, 224)
-    mask[:, :, 56:168, 56:168] = 0.
-
-    import matplotlib.pyplot as plt
-    save_figs(load_helper.unnormalize_imagenet_img(images * mask), nrow=3,
-              visualize=True)
-    plt.show()
-    impute_imgs = ca_inpainter.time_impute_missing_imgs(images, mask)
-    save_figs(load_helper.unnormalize_imagenet_img(impute_imgs), nrow=3,
-              visualize=True)
-    plt.show()
