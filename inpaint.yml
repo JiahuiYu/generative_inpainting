@@ -2,7 +2,7 @@
 DATASET: 'celebahq'  # 'tmnist', 'dtd', 'places2', 'celeba', 'imagenet', 'cityscapes'
 RANDOM_CROP: False
 VAL: False
-LOG_DIR: full_model_celeba_hq_256
+LOG_DIR: smallset_log_dir
 MODEL_RESTORE: ''  # '20180115220926508503_jyugpu0_places2_NORMAL_wgan_gp_full_model'
 
 GAN: 'wgan_gp'  # 'dcgan', 'lsgan', 'wgan_gp', 'one_wgan_gp'
@@ -23,7 +23,7 @@ GPU_ID: -1  # -1 indicate select any available one, otherwise select gpu ID, e.g
 TRAIN_SPE: 10000
 MAX_ITERS: 1000000
 VIZ_MAX_OUT: 10
-GRADS_SUMMARY: False
+GRADS_SUMMARY: True
 GRADIENT_CLIP: False
 GRADIENT_CLIP_VALUE: 0.1
 VAL_PSTEPS: 1000
@@ -50,9 +50,13 @@ DATA_FLIST:
     'data/imagenet/train_shuffled.flist',
     'data/imagenet/validation_static_view.flist',
   ]
+  smallset: [
+    'data/smallset/train_shuffled.flist',
+    'data/smallset/validation_static_view.flist',
+  ]
 
 STATIC_VIEW_SIZE: 30
-IMG_SHAPES: [256, 256, 3]
+IMG_SHAPES: [512, 512, 3]
 HEIGHT: 128
 WIDTH: 128
 MAX_DELTA_HEIGHT: 32

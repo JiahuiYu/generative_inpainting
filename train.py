@@ -8,7 +8,6 @@ import neuralgym as ng
 
 from inpaint_model import InpaintCAModel
 
-
 logger = logging.getLogger()
 
 
@@ -51,7 +50,7 @@ if __name__ == "__main__":
             val_fnames = f.read().splitlines()
         # progress monitor by visualizing static images
         for i in range(config.STATIC_VIEW_SIZE):
-            static_fnames = val_fnames[i:i+1]
+            static_fnames = val_fnames[i:i + 1]
             static_images = ng.data.DataFromFNames(
                 static_fnames, config.IMG_SHAPES, nthreads=1,
                 random_crop=config.RANDOM_CROP).data_pipeline(1)
@@ -74,7 +73,7 @@ if __name__ == "__main__":
     log_prefix = 'model_logs/' + '_'.join([
         ng.date_uid(), socket.gethostname(), config.DATASET,
         'MASKED' if config.GAN_WITH_MASK else 'NORMAL',
-        config.GAN,config.LOG_DIR])
+        config.GAN, config.LOG_DIR])
     # train discriminator with secondary trainer, should initialize before
     # primary trainer.
     discriminator_training_callback = ng.callbacks.SecondaryTrainer(
@@ -104,9 +103,10 @@ if __name__ == "__main__":
         trainer.add_callbacks(discriminator_training_callback)
     trainer.add_callbacks([
         ng.callbacks.WeightsViewer(),
-        ng.callbacks.ModelRestorer(trainer.context['saver'], dump_prefix='model_logs/'+config.MODEL_RESTORE+'/snap', optimistic=True),
-        ng.callbacks.ModelSaver(config.TRAIN_SPE, trainer.context['saver'], log_prefix+'/snap'),
-        ng.callbacks.SummaryWriter((config.VAL_PSTEPS//1), trainer.context['summary_writer'], tf.summary.merge_all()),
+        ng.callbacks.ModelRestorer(trainer.context['saver'], dump_prefix='model_logs/' + config.MODEL_RESTORE + '/snap',
+                                   optimistic=True),
+        ng.callbacks.ModelSaver(config.TRAIN_SPE, trainer.context['saver'], log_prefix + '/snap'),
+        ng.callbacks.SummaryWriter((config.VAL_PSTEPS // 1), trainer.context['summary_writer'], tf.summary.merge_all()),
     ])
     # launch training
     trainer.train()
