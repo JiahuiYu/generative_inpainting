@@ -37,8 +37,8 @@ DATA_FLIST:
   ]
   # http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html, please to use RANDOM_CROP: True
   celeba: [
-    'data/celeba/train_shuffled.flist',
-    'data/celeba/validation_shuffled.flist'
+    'data_flist/train_shuffled.flist',
+    'data_flist/validation_shuffled.flist'
   ]
   # http://places2.csail.mit.edu/, please download the high-resolution dataset and use RANDOM_CROP: True
   places2: [
