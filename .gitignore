@@ -1,3 +1,5 @@
 model_logs
 neuralgym_logs
 data
+__pycache__
+misc
