@@ -55,8 +55,8 @@ if __name__ == "__main__":
         shuffle(validation_file_names)
 
     # make output file if not existed
-    common_utils.open_path_or_create(args.train_filename)
-    common_utils.open_path_or_create(args.validation_filename)
+    common_utils.create_path_if_not_exists(args.train_filename)
+    common_utils.create_path_if_not_exists(args.validation_filename)
 
     # write to file
     fo = open(args.train_filename, "w")
