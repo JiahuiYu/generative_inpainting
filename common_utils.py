@@ -1,11 +1,11 @@
-import os
+import math
 import shutil
 import numpy as np
-
 import errno
 import os
-import cv2
 from PIL import Image
+import matplotlib.pyplot as plt
+import matplotlib.cm as cm
 
 
 def resize_in_path(width=64, height=64, path="./"):
@@ -59,9 +59,57 @@ def split_to_training_and_validation(src_path, validation_path=None, training_pa
             shutil.move(os.path.join(src_path, f), os.path.join(training_path, f))
 
 
+def generate_mask_img(dest_dir, mask_w, mask_h, img_w, img_h, i, j):
+    mask_img = np.zeros((img_h, img_w), dtype=bool)
+    mask_img[i:i + mask_h, j:j + mask_w] = np.ones((mask_h, mask_w), dtype=bool)
+    # save mask
+    mask_path = os.path.join(dest_dir, 'mask[{}_{}][{}_{}].png'.format(i, j, mask_h, mask_w))
+    plt.imsave(mask_path, mask_img, cmap=cm.gray)
+
+
+def apply_mask_to_img(img, mask_img):
+    img[mask_img] = 1
+
+
+def apply_mask_to_img(img, mask_w, mask_h, corner_x, corner_y):
+    img[corner_y:corner_y + mask_h, corner_x:corner_x + mask_w, :] = 1
+
+
+def get_mask_top_left_corner(mask_w, mask_h, img_w, img_h):
+    i = math.floor(img_h / 2) - math.floor(mask_h / 2)
+    j = math.floor(img_w / 2) - math.floor(mask_w / 2)
+    return (i, j)
+
+
+def generate_mask_and_masked_image(img_path, mask_w, mask_h, top_left_corner=None, gen_img_mask=False):
+    img = plt.imread(img_path)
+    [img_h, img_w, _] = img.shape
+
+    if (top_left_corner is None):
+        [i, j] = get_mask_top_left_corner(mask_w, mask_h, img_w, img_h)
+    else:
+        [i, j] = top_left_corner
+
+    if (i < 0 or i + mask_h >= img_h or j < 0 or j + mask_w >= img_w):
+        raise ValueError("dimensions of mask out of img bounds")
+
+    if (gen_img_mask):
+        generate_mask_img(os.path.dirname(img_path), mask_w, mask_h, img_w, img_h, i, j)
+
+    apply_mask_to_img(img, mask_w, mask_h, j, i)
+    # save corrupted image
+    f, e = os.path.splitext(img_path)
+    plt.imsave(f + '[{}_{}][{}_{}]'.format(i, j, mask_h, mask_w) + e, img)
+
+
+def mask_images_demo():
+    generate_mask_and_masked_image("test_data/1.png", 10, 10, gen_img_mask=True)
+    generate_mask_and_masked_image("test_data/2.png", 10, 10)
+    generate_mask_and_masked_image("test_data/3.png", 10, 10)
+
+
 def doo():
     # here we use the util functions when needed
-    resize_in_path(64, 64, "./test_data/")
     return
 
 
