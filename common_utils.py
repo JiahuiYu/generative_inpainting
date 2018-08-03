@@ -14,7 +14,7 @@ def resize_in_path(width=64, height=64, path="./"):
         im = Image.open(path + item)
         f, e = os.path.splitext(path + item)
         im_resize = im.resize((width, height), Image.ANTIALIAS)
-        im_resize.save(f + e, e, quality=100)
+        im_resize.save(f + e, quality=100)
 
 
 def create_path_if_not_exists(path_dir):
@@ -61,6 +61,7 @@ def split_to_training_and_validation(src_path, validation_path=None, training_pa
 
 def doo():
     # here we use the util functions when needed
+    resize_in_path(64, 64, "./test_data/")
     return
 
 
