@@ -1,0 +1,4 @@
+1. ssh to nova.cs.tau.ac.il using putty
+2. in terminal: ssh -Y student2@172.17.130.88
+3. you will be prompted for password: 123
+4. your'e in
