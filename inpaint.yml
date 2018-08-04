@@ -2,7 +2,7 @@
 DATASET: celeba # 'celebahq' 'tmnist', 'dtd', 'places2', 'celeba', 'imagenet', 'cityscapes'
 RANDOM_CROP: False
 VAL: False
-LOG_DIR: textures_small_log_dir
+LOG_DIR: placesa_small_log_dir
 MODEL_RESTORE: ''  # '20180115220926508503_jyugpu0_places2_NORMAL_wgan_gp_full_model'
 
 GAN: 'wgan_gp'  # 'dcgan', 'lsgan', 'wgan_gp', 'one_wgan_gp'
