@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68e48120-8ffa-4a89-ba1e-acbc5314d62c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inpaint.yml" beforeDir="false" afterPath="$PROJECT_DIR$/inpaint.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,20 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="inpaint.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/inpaint.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="136">
+              <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -80,10 +70,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1445" />
-    <option name="height" value="1040" />
+    <option name="x" value="952" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -103,6 +92,17 @@
               <item name="generative_inpainting" type="462c0819:PsiDirectoryNode" />
               <item name="data_flist" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="generative_inpainting" type="b2602c69:ProjectViewProjectNode" />
+              <item name="generative_inpainting" type="462c0819:PsiDirectoryNode" />
+              <item name="model_logs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="generative_inpainting" type="b2602c69:ProjectViewProjectNode" />
+              <item name="generative_inpainting" type="462c0819:PsiDirectoryNode" />
+              <item name="model_logs" type="462c0819:PsiDirectoryNode" />
+              <item name="20180804111913394940_arik-olsh-gpu_celeba_NORMAL_wgan_gp_textures_small_log_dir" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -114,6 +114,9 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Colors" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\repo\generative_inpainting" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\repo\generative_inpainting\training_data" />
     </key>
@@ -130,7 +133,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.common_utils">
+  <component name="RunManager" selected="Python.train">
     <configuration name="common_utils" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="generative_inpainting" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -230,8 +233,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.common_utils" />
         <item itemvalue="Python.train" />
+        <item itemvalue="Python.common_utils" />
         <item itemvalue="Python.prepare_flist" />
         <item itemvalue="Python.convert_suff" />
         <item itemvalue="Python.download_data_set" />
@@ -325,7 +328,7 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.bitwise_and(img, mask_img)</expression-string>
+        <expression-string />
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -340,12 +343,12 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>mask_img[i:i+mask_h, j:j+mask_w]</expression-string>
+        <expression-string />
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>mask_img[i:mask_h, j:mask_w]</expression-string>
+        <expression-string />
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -357,13 +360,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/inpaint_ops.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -559,17 +555,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/neuralgym_logs/20180803065220655309/neuralgym.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/inpaint.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="136">
+          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
         </state>
       </provider>
     </entry>
