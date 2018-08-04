@@ -2,28 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68e48120-8ffa-4a89-ba1e-acbc5314d62c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/common_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/output.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output1.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/output1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output2.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/output2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output3.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/output3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output4.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/output4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/101.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/1[20_30][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/1[20_30][10_10].png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/1[27_27][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/1[27_27][10_10].png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/2[20_30][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/2[20_30][10_10].png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/2[27_27][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/2[27_27][10_10].png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/3[20_30][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/3[20_30][10_10].png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/3[27_27][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/3[27_27][10_10].png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/4[20_30][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/4[20_30][10_10].png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/4[27_27][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/4[27_27][10_10].png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/5[20_30][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/5[20_30][10_10].png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/5[27_27][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/5[27_27][10_10].png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/mask[20_30][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/mask[20_30][10_10].png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/mask[27_27][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/mask[27_27][10_10].png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/1[20_30][10_10].png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/1[27_27][10_10].png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/2[20_30][10_10].png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/2[27_27][10_10].png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/3[20_30][10_10].png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/3[27_27][10_10].png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/4[20_30][10_10].png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/4[27_27][10_10].png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/5[20_30][10_10].png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/5[27_27][10_10].png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/mask[20_30][10_10].png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/mask[27_27][10_10].png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/output.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/output1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/output2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/output3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/output4.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,7 +36,28 @@
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+              <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="common_utils.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common_utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="148" column="6" selection-start-line="148" selection-start-column="6" selection-end-line="148" selection-end-column="6" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="codecs.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/codecs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="173">
+              <caret line="310" selection-start-line="310" selection-end-line="310" />
             </state>
           </provider>
         </entry>
@@ -87,8 +106,8 @@
         <option value="$PROJECT_DIR$/prepare_flist.py" />
         <option value="$PROJECT_DIR$/inpaint_model.py" />
         <option value="$PROJECT_DIR$/inpaint.yml" />
-        <option value="$PROJECT_DIR$/common_utils.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/common_utils.py" />
       </list>
     </option>
   </component>
@@ -109,6 +128,11 @@
             <path>
               <item name="generative_inpainting" type="b2602c69:ProjectViewProjectNode" />
               <item name="generative_inpainting" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="generative_inpainting" type="b2602c69:ProjectViewProjectNode" />
+              <item name="generative_inpainting" type="462c0819:PsiDirectoryNode" />
+              <item name="model_logs" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -263,37 +287,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.4231771" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19583334" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.11653646" side_tool="true" visible="true" weight="0.18168813" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49674478" weight="0.32904148" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.79036456" weight="0.5064378" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.23697917" side_tool="true" visible="true" weight="0.33225107" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6359375" weight="0.22727273" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.88346356" visible="true" weight="0.18168813" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6542969" weight="0.3662375" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4986979" weight="0.32905984" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7630208" visible="true" weight="0.33225107" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.63932294" visible="true" weight="0.18376069" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19596355" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49739584" weight="0.32905984" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.65559894" weight="0.36752138" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.3606771" side_tool="true" visible="true" weight="0.18376069" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4986979" weight="0.32905984" />
-      <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49739584" weight="0.32905984" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -309,8 +322,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/common_utils.py</url>
-          <line>108</line>
-          <option name="timeStamp" value="35" />
+          <line>102</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/common_utils.py</url>
+          <line>84</line>
+          <option name="timeStamp" value="49" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -320,118 +338,59 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="36" />
+      <option name="time" value="58" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>mask_img.shape[0]</expression-string>
+        <expression-string>test_imgs_dir</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>os.path.dirname(img_path)</expression-string>
+        <expression-string>os.listdir(test_imgs_dir)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>os.listdir(img_path)</expression-string>
+        <expression-string>imgs.index(0)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>img</expression-string>
+        <expression-string>imgs(0)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.bitwise_and(img, mask_img)</expression-string>
+        <expression-string>imgs[0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>mask_img</expression-string>
+        <expression-string>imgs[i]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.ones(mask_shape)</expression-string>
+        <expression-string>mask.mask_img</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>mask_img[i:i+mask_h, j:j+mask_w]</expression-string>
+        <expression-string>mask[&quot;mask_img&quot;]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>mask_img[i:mask_h, j:mask_w]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>os.path.dirname(path_dir)</expression-string>
+        <expression-string>mask</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test_data/4.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/3.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/neuralgym/ops/layers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="113" column="4" selection-start-line="113" selection-start-column="4" selection-end-line="113" selection-end-column="4" />
-          <folding>
-            <element signature="e#15#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inpaint_ops.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="177" column="23" selection-start-line="177" selection-start-column="23" selection-end-line="177" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inpaint_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="54" column="32" lean-forward="true" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.1/system/python_stubs/-1991469898/numpy/core/multiarray.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="5708" column="4" selection-start-line="5708" selection-start-column="4" selection-end-line="5708" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="1071" column="40" lean-forward="true" selection-start-line="1071" selection-start-column="40" selection-end-line="1071" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/scipy/misc/pilutil.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="170" column="15" selection-start-line="170" selection-start-column="11" selection-end-line="170" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_data/1_.png" />
     <entry file="file://$PROJECT_DIR$/test_data/1_27_27_10_10_.png" />
     <entry file="file://$PROJECT_DIR$/mask[27_27][10_10].png" />
@@ -458,13 +417,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test_data/1.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="308" selection-start-line="308" selection-end-line="308" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_cases/1[27_27][10_10].png" />
     <entry file="file://$PROJECT_DIR$/test_cases/mask[27_27][10_10].png">
@@ -545,16 +497,6 @@
     <entry file="file://$PROJECT_DIR$/test_cases/output11.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/common_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="106" column="23" selection-start-line="106" selection-start-column="23" selection-end-line="106" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_cases/2[22_22][20_20].png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -585,10 +527,61 @@
     <entry file="file://$PROJECT_DIR$/test_cases/output22.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="310" selection-start-line="310" selection-end-line="310" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/m[6_6][25_38]/102.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/m[6_6][25_38]/101.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/m[6_6][25_38]/100.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/m[6_6][25_38]/10.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/m[9_7][14_14].png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/m[6_6][25_38].png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/m[6_6][25_38]/1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/m[21_13][10_32]/102.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="148" column="6" selection-start-line="148" selection-start-column="6" selection-end-line="148" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
         </state>
       </provider>
     </entry>

@@ -6,6 +6,7 @@ import os
 from PIL import Image
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
+import random
 
 
 def resize_in_path(width=64, height=64, path="./"):
@@ -59,21 +60,13 @@ def split_to_training_and_validation(src_path, validation_path=None, training_pa
             shutil.move(os.path.join(src_path, f), os.path.join(training_path, f))
 
 
-def generate_mask_img(dest_dir, mask_w, mask_h, img_w, img_h, i, j):
+def generate_mask_img(dest_dir, mask_w, mask_h, img_w, img_h, i, j, name="mask.png"):
     mask_img = np.zeros((img_h, img_w), dtype=bool)
     mask_img[i:i + mask_h, j:j + mask_w] = np.ones((mask_h, mask_w), dtype=bool)
     # save mask
-    mask_path = os.path.join(dest_dir, 'mask[{}_{}][{}_{}].png'.format(i, j, mask_h, mask_w))
+    mask_path = os.path.join(dest_dir, name)
     plt.imsave(mask_path, mask_img, cmap=cm.gray)
     return mask_img
-
-
-def apply_mask_img_to_img(img, mask_img):
-    img[mask_img] = 1
-
-
-def apply_mask_to_img(img, mask_w, mask_h, corner_x, corner_y):
-    img[corner_y:corner_y + mask_h, corner_x:corner_x + mask_w, :] = 1
 
 
 def get_default_mask_top_left_corner(mask_w, mask_h, img_w, img_h):
@@ -82,59 +75,101 @@ def get_default_mask_top_left_corner(mask_w, mask_h, img_w, img_h):
     return (i, j)
 
 
-def generate_mask_and_masked_image(img_path, mask_w, mask_h, top=None, left=None, gen_img_mask=False):
-    img = plt.imread(img_path)
-    [img_h, img_w, _] = img.shape
+class Mask:
+    def __init__(self, **kwds):
+        self.__dict__.update(kwds)
 
-    if (top is None and left is None):
-        [i, j] = get_default_mask_top_left_corner(mask_w, mask_h, img_w, img_h)
+
+def create_test_cases(base_dir, h_limit, w_limit, test_data_dir, num_img_test, num_masks):
+    imgs = os.listdir(test_data_dir)
+    create_path_if_not_exists(base_dir)
+    masks = []
+    for i in range(num_masks):
+        satisfied = False
+        curr = None
+        while (not satisfied):
+            curr = create_random_mask(h_limit, w_limit)
+            # prevent very small masks
+            satisfied = curr.width >= 10 and curr.height >= 10
+        masks.append(curr)
+    # create mask directories
+    for mask in masks:
+        mask_id = "m[{}_{}][{}_{}]".format(mask.top, mask.left, mask.height, mask.width)
+        mask_dir = os.path.join(base_dir, mask_id)
+        create_path_if_not_exists(mask_dir)
+        plt.imsave(mask_dir, mask.mask_img, cmap=cm.gray)
+        for i in range(num_img_test):
+            img_name = imgs[i]
+            img = plt.imread(os.path.join(test_data_dir, img_name))
+            img[mask.mask_img] = 1
+            # save incomplete image
+            plt.imsave(os.path.join(mask_dir, img_name), img)
+
+
+def create_random_mask(h_limit, w_limit, margin=5, is_square=False, is_show=False):
+    top = random.randint(margin, w_limit - margin)
+    left = random.randint(margin, h_limit - margin)
+    mask_w = random.randint(0, w_limit - left - margin)
+    if is_square:
+        mask_h = mask_w
     else:
-        i = top
-        j = left
-
-    if (i < 0 or i + mask_h >= img_h or j < 0 or j + mask_w >= img_w):
-        raise ValueError("dimensions of mask out of img bounds")
-
-    if (gen_img_mask):
-        mask_img = generate_mask_img(os.path.dirname(img_path), mask_w, mask_h, img_w, img_h, i, j)
-
-    apply_mask_to_img(img, mask_w, mask_h, j, i)
-    # save corrupted image
-    f, e = os.path.splitext(img_path)
-    plt.imsave(f + '[{}_{}][{}_{}]'.format(i, j, mask_h, mask_w) + e, img)
+        mask_h = random.randint(0, h_limit - top - margin)
+    return create_mask(top, left, mask_h, mask_w, h_limit, w_limit, is_show)
 
 
-def mask_images_demo():
-    generate_mask_and_masked_image("test_data/1.png", 20, 20, gen_img_mask=True)
-    generate_mask_and_masked_image("test_data/2.png", 20, 20)
-    generate_mask_and_masked_image("test_data/3.png", 20, 20)
-    generate_mask_and_masked_image("test_data/4.png", 20, 20)
-    generate_mask_and_masked_image("test_data/5.png", 20, 20)
+def create_mask(top, left, mask_h, mask_w, h_limit, w_limit, is_show=False):
+    mask_img = np.zeros((h_limit, w_limit), dtype=bool)
+    mask_img[top:top + mask_h, left:left + mask_w] = np.ones((mask_h, mask_w), dtype=bool)
+    if (is_show):
+        plt.imshow(mask_img, cmap=plt.cm.gray)  # use appropriate colormap here
+        plt.show()
+    mask = Mask(mask_img=mask_img, top=top, left=left, width=mask_w, height=mask_h)
+    return mask
 
 
-def doo():
-    # here we use the util functions when needed
-    mask_images_demo()
+def create_test_imgs():
+    create_test_cases(
+        test_data_dir="test_data",
+        h_limit=64,
+        w_limit=64,
+        num_img_test=5,
+        base_dir="test_cases",
+        num_masks=2
+    )
     return
 
 
-doo()
+def get_files_in_dir(d, full_path=False):
+    if (full_path):
+        # gets full relative path of all files in directory
+        return [os.path.join(d, o) for o in os.listdir(d) if os.path.isfile(os.path.join(d, o))]
+    return [o for o in os.listdir(d) if os.path.isfile(os.path.join(d, o))]
+
+
+def run_test():
+    test_dir = "test_cases"
+    test_name = "original"
+    checkpoint_dir = "model_logs/20180804111913394940_arik-olsh-gpu_celeba_NORMAL_wgan_gp_textures_small_log_dir"
+    mask_files = get_files_in_dir(test_dir, full_path=True)
+    for mask in mask_files:
+        test_imgs_dir, _ = os.path.splitext(mask)
+        test_results_dir = os.path.join(test_imgs_dir, test_name)
+        create_path_if_not_exists(test_results_dir)
+        test_imgs = get_files_in_dir(test_imgs_dir)
+        for img in test_imgs:
+            full_img_path = os.path.join(test_imgs_dir, img)
+            output = os.path.join(test_results_dir, img)
+            cmd_pattern = "python test.py --image {} --mask {} --output {} --checkpoint {}"
+            cmd = cmd_pattern.format(full_img_path, mask, output, checkpoint_dir)
+            print("running %s" % cmd)
+            os.system(cmd)
+    return
+
+
+run_test()
 
 ####### comments #######
 
-# convert_formats("data_sets_our/textures/train")
-# convert_formats("data_sets_our/textures/test")
-# convert_formats("data_sets_our/textures/validation")
-
-# a = os.getcwd()
-# print(a)
-# src_path = os.path.join(a,'training_data')
-# test_path = os.path.join(src_path,'validation')
-# training_path = os.path.join(src_path,'training')
-# split_to_training_and_test_sets_given_path(src_path, test_path, training_path)
-
-# def get_dims(src):
-#     a = cv2.imread(src, cv2.IMREAD_ANYCOLOR)
-#     print(a)
-#
-# get_dims("training_data/training/textures/1.png")
+# to test model:
+# 1. run create_test_imgs() to create folders with different masks and incomplete images
+# 2. run run_test() to run the model on these folders with the right parameters.
