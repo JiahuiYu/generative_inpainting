@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="68e48120-8ffa-4a89-ba1e-acbc5314d62c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inpaint.yml" beforeDir="false" afterPath="$PROJECT_DIR$/inpaint.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,7 +16,20 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="1" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="inpaint.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inpaint.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -238,7 +252,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.41927084" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3606771" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5045573" side_tool="true" visible="true" weight="0.27896994" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49739584" weight="0.32905984" />
@@ -544,13 +558,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/inpaint.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="272">
+          <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="1" selection-end-column="14" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
