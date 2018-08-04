@@ -65,9 +65,10 @@ def generate_mask_img(dest_dir, mask_w, mask_h, img_w, img_h, i, j):
     # save mask
     mask_path = os.path.join(dest_dir, 'mask[{}_{}][{}_{}].png'.format(i, j, mask_h, mask_w))
     plt.imsave(mask_path, mask_img, cmap=cm.gray)
+    return mask_img
 
 
-def apply_mask_to_img(img, mask_img):
+def apply_mask_img_to_img(img, mask_img):
     img[mask_img] = 1
 
 
@@ -75,26 +76,27 @@ def apply_mask_to_img(img, mask_w, mask_h, corner_x, corner_y):
     img[corner_y:corner_y + mask_h, corner_x:corner_x + mask_w, :] = 1
 
 
-def get_mask_top_left_corner(mask_w, mask_h, img_w, img_h):
+def get_default_mask_top_left_corner(mask_w, mask_h, img_w, img_h):
     i = math.floor(img_h / 2) - math.floor(mask_h / 2)
     j = math.floor(img_w / 2) - math.floor(mask_w / 2)
     return (i, j)
 
 
-def generate_mask_and_masked_image(img_path, mask_w, mask_h, top_left_corner=None, gen_img_mask=False):
+def generate_mask_and_masked_image(img_path, mask_w, mask_h, top=None, left=None, gen_img_mask=False):
     img = plt.imread(img_path)
     [img_h, img_w, _] = img.shape
 
-    if (top_left_corner is None):
-        [i, j] = get_mask_top_left_corner(mask_w, mask_h, img_w, img_h)
+    if (top is None and left is None):
+        [i, j] = get_default_mask_top_left_corner(mask_w, mask_h, img_w, img_h)
     else:
-        [i, j] = top_left_corner
+        i = top
+        j = left
 
     if (i < 0 or i + mask_h >= img_h or j < 0 or j + mask_w >= img_w):
         raise ValueError("dimensions of mask out of img bounds")
 
     if (gen_img_mask):
-        generate_mask_img(os.path.dirname(img_path), mask_w, mask_h, img_w, img_h, i, j)
+        mask_img = generate_mask_img(os.path.dirname(img_path), mask_w, mask_h, img_w, img_h, i, j)
 
     apply_mask_to_img(img, mask_w, mask_h, j, i)
     # save corrupted image
@@ -106,10 +108,13 @@ def mask_images_demo():
     generate_mask_and_masked_image("test_data/1.png", 10, 10, gen_img_mask=True)
     generate_mask_and_masked_image("test_data/2.png", 10, 10)
     generate_mask_and_masked_image("test_data/3.png", 10, 10)
+    generate_mask_and_masked_image("test_data/4.png", 10, 10)
+    generate_mask_and_masked_image("test_data/5.png", 10, 10)
 
 
 def doo():
     # here we use the util functions when needed
+    mask_images_demo()
     return
 
 
