@@ -3,7 +3,7 @@ DATASET: celeba # 'celebahq' 'tmnist', 'dtd', 'places2', 'celeba', 'imagenet', '
 RANDOM_CROP: False
 VAL: False
 LOG_DIR: placesa_small_log_dir
-MODEL_RESTORE: ''  # '20180115220926508503_jyugpu0_places2_NORMAL_wgan_gp_full_model'
+MODEL_RESTORE: '20180804111913394940_arik-olsh-gpu_celeba_NORMAL_wgan_gp_textures_small_log_dir'  # '20180115220926508503_jyugpu0_places2_NORMAL_wgan_gp_full_model'
 
 GAN: 'wgan_gp'  # 'dcgan', 'lsgan', 'wgan_gp', 'one_wgan_gp'
 PRETRAIN_COARSE_NETWORK: False
