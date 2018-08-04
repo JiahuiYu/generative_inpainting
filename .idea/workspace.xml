@@ -2,9 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68e48120-8ffa-4a89-ba1e-acbc5314d62c" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/common_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_data/mask[27_27][10_10].png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/output.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output1.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/output1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output2.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/output2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output3.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/output3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output4.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/output4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/101.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/1[20_30][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/1[20_30][10_10].png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/1[27_27][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/1[27_27][10_10].png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/2[20_30][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/2[20_30][10_10].png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/2[27_27][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/2[27_27][10_10].png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/3[20_30][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/3[20_30][10_10].png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/3[27_27][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/3[27_27][10_10].png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/4[20_30][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/4[20_30][10_10].png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/4[27_27][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/4[27_27][10_10].png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/5[20_30][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/5[20_30][10_10].png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/5[27_27][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/5[27_27][10_10].png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/mask[20_30][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/mask[20_30][10_10].png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/mask[27_27][10_10].png" beforeDir="false" afterPath="$PROJECT_DIR$/test_cases/mask[27_27][10_10].png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,61 +34,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="output.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/output.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file leaf-file-name="output1.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/output1.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file leaf-file-name="output2.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/output2.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file leaf-file-name="output3.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/output3.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file leaf-file-name="output4.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/output4.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file leaf-file-name="common_utils.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/common_utils.py">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="107" column="61" selection-start-line="107" selection-start-column="61" selection-end-line="107" selection-end-column="61" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="85">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2[20_30][10_10].png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_data/2[20_30][10_10].png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file leaf-file-name="3[20_30][10_10].png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_data/3[20_30][10_10].png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file leaf-file-name="4[20_30][10_10].png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_data/4[20_30][10_10].png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file leaf-file-name="5[20_30][10_10].png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_data/5[20_30][10_10].png">
-          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
     </leaf>
@@ -115,9 +86,9 @@
         <option value="$PROJECT_DIR$/common.py" />
         <option value="$PROJECT_DIR$/prepare_flist.py" />
         <option value="$PROJECT_DIR$/inpaint_model.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/inpaint.yml" />
         <option value="$PROJECT_DIR$/common_utils.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -139,11 +110,6 @@
               <item name="generative_inpainting" type="b2602c69:ProjectViewProjectNode" />
               <item name="generative_inpainting" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="generative_inpainting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="generative_inpainting" type="462c0819:PsiDirectoryNode" />
-              <item name="data_flist" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -159,6 +125,7 @@
       <recent name="C:\repo\generative_inpainting" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\repo\generative_inpainting\test_cases" />
       <recent name="C:\repo\generative_inpainting\training_data" />
     </key>
   </component>
@@ -299,15 +266,15 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.4231771" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.4231771" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.20898438" side_tool="true" visible="true" weight="0.5064378" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.11653646" side_tool="true" visible="true" weight="0.18168813" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49674478" weight="0.32904148" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7910156" visible="true" weight="0.5064378" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.79036456" weight="0.5064378" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.8854167" weight="0.16165951" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.88346356" visible="true" weight="0.18168813" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6542969" weight="0.3662375" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -411,53 +378,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/tensorflow/python/client/session.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21573">
-          <caret line="1290" selection-start-line="1290" selection-end-line="1290" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/tensorflow/python/framework/ops.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8245">
-          <caret line="527" selection-start-line="527" selection-end-line="527" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training_data/training/celebsa/000001.jpg" />
-    <entry file="file://$PROJECT_DIR$/training_data/training/celebsa/000001.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training_data/training/celebsa/000002.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training_data/validation/celebsa/000005.png" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/shutil.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="550" column="35" selection-start-line="550" selection-start-column="35" selection-end-line="550" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/pip/_internal/utils/outdated.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="77" column="19" selection-start-line="77" selection-start-column="19" selection-end-line="77" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prepare_flist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="63" column="14" lean-forward="true" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/neuralgym_logs/20180803102517235346/neuralgym.log" />
-    <entry file="file://$PROJECT_DIR$/test_data/5.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_data/4.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -546,8 +466,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/1[27_27][10_10].png" />
-    <entry file="file://$PROJECT_DIR$/test_data/mask[27_27][10_10].png">
+    <entry file="file://$PROJECT_DIR$/test_cases/1[27_27][10_10].png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/mask[27_27][10_10].png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/connect_moodle_gpu">
@@ -570,13 +490,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="11" selection-start-line="3" selection-end-line="3" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/inpaint.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -584,58 +497,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/2[27_27][10_10].png">
+    <entry file="file://$PROJECT_DIR$/test_cases/2[27_27][10_10].png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/3[27_27][10_10].png">
+    <entry file="file://$PROJECT_DIR$/test_cases/3[27_27][10_10].png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/4[27_27][10_10].png">
+    <entry file="file://$PROJECT_DIR$/test_cases/1[20_30][10_10].png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/5[27_27][10_10].png">
+    <entry file="file://$PROJECT_DIR$/test_cases/mask[20_30][10_10].png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/1[20_30][10_10].png">
+    <entry file="file://$PROJECT_DIR$/test_cases/2[20_30][10_10].png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/mask[20_30][10_10].png">
+    <entry file="file://$PROJECT_DIR$/test_cases/3[20_30][10_10].png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/2[20_30][10_10].png">
+    <entry file="file://$PROJECT_DIR$/test_cases/4[20_30][10_10].png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/3[20_30][10_10].png">
+    <entry file="file://$PROJECT_DIR$/test_cases/5[20_30][10_10].png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/4[20_30][10_10].png">
+    <entry file="file://$PROJECT_DIR$/test_cases/output.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/5[20_30][10_10].png">
+    <entry file="file://$PROJECT_DIR$/test_cases/output1.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/output.png">
+    <entry file="file://$PROJECT_DIR$/test_cases/output2.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/output1.png">
+    <entry file="file://$PROJECT_DIR$/test_cases/output3.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/output2.png">
+    <entry file="file://$PROJECT_DIR$/test_cases/output4.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/output3.png">
+    <entry file="file://$PROJECT_DIR$/test_cases/5[27_27][10_10].png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/output4.png">
+    <entry file="file://$PROJECT_DIR$/test_cases/4[27_27][10_10].png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/output11.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/common_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="107" column="61" selection-start-line="107" selection-start-column="61" selection-end-line="107" selection-end-column="61" />
+        <state relative-caret-position="198">
+          <caret line="106" column="23" selection-start-line="106" selection-start-column="23" selection-end-line="106" selection-end-column="23" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/2[22_22][20_20].png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/output31.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/output32.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/output41.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/output42.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/output12.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/output51.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/output52.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/output21.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/output22.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>

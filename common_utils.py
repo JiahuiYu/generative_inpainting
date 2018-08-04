@@ -105,11 +105,11 @@ def generate_mask_and_masked_image(img_path, mask_w, mask_h, top=None, left=None
 
 
 def mask_images_demo():
-    generate_mask_and_masked_image("test_data/1.png", 10, 10, gen_img_mask=True)
-    generate_mask_and_masked_image("test_data/2.png", 10, 10)
-    generate_mask_and_masked_image("test_data/3.png", 10, 10)
-    generate_mask_and_masked_image("test_data/4.png", 10, 10)
-    generate_mask_and_masked_image("test_data/5.png", 10, 10)
+    generate_mask_and_masked_image("test_data/1.png", 20, 20, gen_img_mask=True)
+    generate_mask_and_masked_image("test_data/2.png", 20, 20)
+    generate_mask_and_masked_image("test_data/3.png", 20, 20)
+    generate_mask_and_masked_image("test_data/4.png", 20, 20)
+    generate_mask_and_masked_image("test_data/5.png", 20, 20)
 
 
 def doo():
