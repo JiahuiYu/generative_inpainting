@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68e48120-8ffa-4a89-ba1e-acbc5314d62c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,34 +13,9 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="common_utils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common_utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="131" column="18" selection-start-line="131" selection-start-column="18" selection-end-line="131" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="inpaint.yml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/inpaint.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="connect_moodle_gpu" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/connect_moodle_gpu">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -83,6 +58,7 @@
         <option value="$PROJECT_DIR$/inpaint_model.py" />
         <option value="$PROJECT_DIR$/common_utils.py" />
         <option value="$PROJECT_DIR$/inpaint.yml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -97,6 +73,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -109,16 +86,10 @@
               <item name="generative_inpainting" type="462c0819:PsiDirectoryNode" />
               <item name="data_flist" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="generative_inpainting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="generative_inpainting" type="462c0819:PsiDirectoryNode" />
-              <item name="model_logs" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -265,24 +236,36 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19596355" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.41927084" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.3606771" side_tool="true" visible="true" weight="0.18376069" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5045573" side_tool="true" visible="true" weight="0.27896994" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49739584" weight="0.32905984" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.63932294" visible="true" weight="0.18376069" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6380208" weight="0.11444921" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4986979" weight="0.32905984" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.65559894" weight="0.36752138" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49544272" visible="true" weight="0.27896994" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.65494794" weight="0.15450644" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.63932294" visible="true" weight="0.18376069" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19596355" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49739584" weight="0.32905984" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.65559894" weight="0.36752138" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.3606771" side_tool="true" visible="true" weight="0.18376069" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4986979" weight="0.32905984" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -412,9 +395,6 @@
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/training_data/validation/celebsa/000005.png" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/shutil.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="106">
@@ -436,11 +416,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/neuralgym_logs/20180803102517235346/neuralgym.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3630" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/neuralgym_logs/20180803102517235346/neuralgym.log" />
     <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -505,21 +481,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="170" column="15" selection-start-line="170" selection-start-column="11" selection-end-line="170" selection-end-column="15" />
-          <folding>
-            <element signature="e#5489#7253#0" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/1_.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/1_27_27_10_10_.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mask[27_27][10_10].png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test_data/1_.png" />
+    <entry file="file://$PROJECT_DIR$/test_data/1_27_27_10_10_.png" />
+    <entry file="file://$PROJECT_DIR$/mask[27_27][10_10].png" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/matplotlib/axes/_axes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -551,21 +518,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/4[27_27][10_10].png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/1[27_27][10_10].png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test_data/4[27_27][10_10].png" />
+    <entry file="file://$PROJECT_DIR$/test_data/1[27_27][10_10].png" />
     <entry file="file://$PROJECT_DIR$/test_data/mask[27_27][10_10].png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/3[27_27][10_10].png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_data/2[27_27][10_10].png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test_data/3[27_27][10_10].png" />
+    <entry file="file://$PROJECT_DIR$/test_data/2[27_27][10_10].png" />
     <entry file="file://$PROJECT_DIR$/connect_moodle_gpu">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -589,6 +548,9 @@
           <caret line="5" column="13" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
