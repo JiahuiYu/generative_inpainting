@@ -132,9 +132,9 @@ def create_test_imgs():
         test_data_dir="test_data",
         h_limit=64,
         w_limit=64,
-        num_img_test=5,
+        num_img_test=10,
         base_dir="test_cases",
-        num_masks=2
+        num_masks=10
     )
     return
 
@@ -146,10 +146,13 @@ def get_files_in_dir(d, full_path=False):
     return [o for o in os.listdir(d) if os.path.isfile(os.path.join(d, o))]
 
 
+ORIGINAL_WEIGHTS_64_64_100000_ITERS = "model_logs/20180805072004313626_arik-olsh-gpu_celeba_NORMAL_wgan_gp_placesa_small_log_dir"  # /snap-80000"
+
+
 def run_test():
     test_dir = "test_cases"
-    test_name = "original"
-    checkpoint_dir = "model_logs/20180804111913394940_arik-olsh-gpu_celeba_NORMAL_wgan_gp_textures_small_log_dir"
+    test_name = "run1"
+    checkpoint_dir = ORIGINAL_WEIGHTS_64_64_100000_ITERS
     mask_files = get_files_in_dir(test_dir, full_path=True)
     for mask in mask_files:
         test_imgs_dir, _ = os.path.splitext(mask)
@@ -166,6 +169,7 @@ def run_test():
     return
 
 
+# create_test_imgs()
 run_test()
 
 ####### comments #######
