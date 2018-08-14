@@ -4,6 +4,7 @@ import logging
 import cv2
 import neuralgym as ng
 import tensorflow as tf
+import tensorlayer as tl
 from tensorflow.contrib.framework.python.ops import arg_scope
 
 from neuralgym.models import Model
@@ -19,6 +20,9 @@ from inpaint_ops import spatial_discounting_mask
 from inpaint_ops import resize_mask_like, contextual_attention
 
 logger = logging.getLogger()
+
+
+
 
 
 class InpaintCAModel(Model):
@@ -129,27 +133,72 @@ class InpaintCAModel(Model):
             x = flatten(x, name='flatten')
             return x
 
-    def build_wgan_discriminator(self, batch_local, batch_global,
-                                 reuse=False, training=True):
+    def build_wgan_local_discriminator_verbose(self, x, reuse=False, training=True):
+        with tf.variable_scope('discriminator_local', reuse=reuse):
+            cnum = 64  # todo: check, do we need activation ?
+            x1 = dis_conv(x, cnum, name='conv1', training=training)
+            x2 = dis_conv(x1, cnum * 2, name='conv2', training=training)
+            x3 = dis_conv(x2, cnum * 4, name='conv3', training=training)
+            x4 = dis_conv(x3, cnum * 8, name='conv4', training=training)
+            x5 = flatten(x4, name='flatten')
+            return x1,x2,x3,x4,x5
+
+    def build_wgan_global_discriminator_verbose(self, x, reuse=False, training=True):
+        with tf.variable_scope('discriminator_global', reuse=reuse):
+            cnum = 64
+            x1 = dis_conv(x, cnum, name='conv1', training=training)
+            x2 = dis_conv(x1, cnum * 2, name='conv2', training=training)
+            x3 = dis_conv(x2, cnum * 4, name='conv3', training=training)
+            x4 = dis_conv(x3, cnum * 4, name='conv4', training=training)
+            x5 = flatten(x4, name='flatten')
+            return x1,x2,x3,x4,x5
+
+    def get_perceptual_loss(self, target, predicted, name):
+        with tf.variable_scope(name):
+            loss = tl.cost.absolute_difference_error(target, predicted)
+            scalar_summary('loss', loss)
+            scalar_summary('pos_value_avg', tf.reduce_mean(target))
+            scalar_summary('neg_value_avg', tf.reduce_mean(predicted))
+        return loss
+
+    def build_wgan_discriminator(self, batch_local, batch_global, reuse=False, training=True, calc_perceptual_loss=False, losses= None):
         with tf.variable_scope('discriminator', reuse=reuse):
-            dlocal = self.build_wgan_local_discriminator(
-                batch_local, reuse=reuse, training=training)
-            dglobal = self.build_wgan_global_discriminator(
-                batch_global, reuse=reuse, training=training)
+            if (calc_perceptual_loss):
+                _, _, feats_local, _, dlocal = self.build_wgan_local_discriminator_verbose(batch_local,
+                                                                                           reuse=reuse,
+                                                                                           training=training)
+                _, _, feats_global, _, dglobal = self.build_wgan_global_discriminator_verbose(batch_global,
+                                                                                              reuse=reuse,
+                                                                                              training=training)
+                with tf.variable_scope('perceptual_loss', reuse=reuse):
+                    feats_local_flat = flatten(feats_local, "flatten_local")
+                    feats_global_flat = flatten(feats_global, "flatten_global")
+                    fl_neg, fl_pos = tf.split(feats_local_flat, 2)
+                    losses['perceptual_loss'] = self.get_perceptual_loss(fl_neg, fl_pos, name="loss_local")
+                    fg_neg, fg_pos = tf.split(feats_global_flat, 2)
+                    losses['perceptual_loss'] += self.get_perceptual_loss(fg_neg, fg_pos, name="loss_global")
+            else:
+                dlocal = self.build_wgan_local_discriminator(batch_local, reuse=reuse, training=training)
+                dglobal = self.build_wgan_global_discriminator(batch_global, reuse=reuse, training=training)
             dout_local = tf.layers.dense(dlocal, 1, name='dout_local_fc')
             dout_global = tf.layers.dense(dglobal, 1, name='dout_global_fc')
             return dout_local, dout_global
 
-    def build_graph_with_losses(self, batch_data, config, training=True,
-                                summary=False, reuse=False):
+    def build_graph_with_losses(self, batch_data, config, training=True, summary=False, reuse=False):
         batch_pos = batch_data / 127.5 - 1.
         # generate mask, 1 represents masked point
         bbox = random_bbox(config)
         mask = bbox2mask(bbox, config, name='mask_c')
         batch_incomplete = batch_pos * (1. - mask)
+        # building the inpaint network
         x1, x2, offset_flow = self.build_inpaint_net(
-            batch_incomplete, mask, config, reuse=reuse, training=training,
+            batch_incomplete,
+            mask,
+            config,
+            reuse=reuse,
+            training=training,
             padding=config.PADDING)
+
         if config.PRETRAIN_COARSE_NETWORK:
             batch_predicted = x1
             logger.info('Set batch_predicted to x1.')
@@ -167,11 +216,9 @@ class InpaintCAModel(Model):
         local_patch_batch_complete = local_patch(batch_complete, bbox)
         local_patch_mask = local_patch(mask, bbox)
         l1_alpha = config.COARSE_L1_ALPHA
-        losses['l1_loss'] = l1_alpha * tf.reduce_mean(
-            tf.abs(local_patch_batch_pos - local_patch_x1) * spatial_discounting_mask(config))
+        losses['l1_loss'] = l1_alpha * tf.reduce_mean(tf.abs(local_patch_batch_pos - local_patch_x1) * spatial_discounting_mask(config))
         if not config.PRETRAIN_COARSE_NETWORK:
-            losses['l1_loss'] += tf.reduce_mean(
-                tf.abs(local_patch_batch_pos - local_patch_x2) * spatial_discounting_mask(config))
+            losses['l1_loss'] += tf.reduce_mean(tf.abs(local_patch_batch_pos - local_patch_x2) * spatial_discounting_mask(config))
         losses['ae_loss'] = l1_alpha * tf.reduce_mean(tf.abs(batch_pos - x1) * (1. - mask))
         if not config.PRETRAIN_COARSE_NETWORK:
             losses['ae_loss'] += tf.reduce_mean(tf.abs(batch_pos - x2) * (1. - mask))
@@ -181,12 +228,8 @@ class InpaintCAModel(Model):
             scalar_summary('losses/ae_loss', losses['ae_loss'])
             viz_img = [batch_pos, batch_incomplete, batch_complete]
             if offset_flow is not None:
-                viz_img.append(
-                    resize(offset_flow, scale=4,
-                           func=tf.image.resize_nearest_neighbor))
-            images_summary(
-                tf.concat(viz_img, axis=2),
-                'raw_incomplete_predicted_complete', config.VIZ_MAX_OUT)
+                viz_img.append(resize(offset_flow, scale=4, func=tf.image.resize_nearest_neighbor))
+            images_summary(tf.concat(viz_img, axis=2), 'raw_incomplete_predicted_complete', config.VIZ_MAX_OUT)
 
         # gan
         batch_pos_neg = tf.concat([batch_pos, batch_complete], axis=0)
@@ -197,8 +240,7 @@ class InpaintCAModel(Model):
         # wgan with gradient penalty
         if config.GAN == 'wgan_gp':
             # seperate gan
-            pos_neg_local, pos_neg_global = self.build_wgan_discriminator(local_patch_batch_pos_neg, batch_pos_neg,
-                                                                          training=training, reuse=reuse)
+            pos_neg_local, pos_neg_global = self.build_wgan_discriminator(local_patch_batch_pos_neg, batch_pos_neg, training=training, reuse=reuse)
             pos_local, neg_local = tf.split(pos_neg_local, 2)
             pos_global, neg_global = tf.split(pos_neg_global, 2)
             # wgan loss
@@ -209,8 +251,7 @@ class InpaintCAModel(Model):
             # gp
             interpolates_local = random_interpolates(local_patch_batch_pos, local_patch_batch_complete)
             interpolates_global = random_interpolates(batch_pos, batch_complete)
-            dout_local, dout_global = self.build_wgan_discriminator(
-                interpolates_local, interpolates_global, reuse=True)
+            dout_local, dout_global = self.build_wgan_discriminator(interpolates_local, interpolates_global, reuse=True)
             # apply penalty
             penalty_local = gradients_penalty(interpolates_local, dout_local, mask=local_patch_mask)
             penalty_global = gradients_penalty(interpolates_global, dout_global, mask=mask)
@@ -239,7 +280,15 @@ class InpaintCAModel(Model):
             losses['g_loss'] = 0
         else:
             losses['g_loss'] = config.GAN_LOSS_ALPHA * losses['g_loss']
-        losses['g_loss'] += config.L1_LOSS_ALPHA * losses['l1_loss']
+        if summary:
+            losses['g_loss'] += config.L1_LOSS_ALPHA * losses['l1_loss']
+
+        ### perceptual loss
+        PERCEPTUAL_LOSS_ALPHA = 0.3  # todo: check what is the alpha they chose in the article
+        losses['g_loss'] += PERCEPTUAL_LOSS_ALPHA * losses['perceptual_loss']
+        scalar_summary('losses/perceptual_loss', losses['perceptual_loss'])
+        ###
+
         logger.info('Set L1_LOSS_ALPHA to %f' % config.L1_LOSS_ALPHA)
         logger.info('Set GAN_LOSS_ALPHA to %f' % config.GAN_LOSS_ALPHA)
         if config.AE_LOSS:
