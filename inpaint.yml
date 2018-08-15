@@ -2,7 +2,7 @@
 DATASET: celeba # 'celebahq' 'tmnist', 'dtd', 'places2', 'celeba', 'imagenet', 'cityscapes'
 RANDOM_CROP: False
 VAL: False
-LOG_DIR: placesa_small_ploss_1_log_dir
+LOG_DIR: placesa_small_ploss_a1c3_log_dir
 MODEL_RESTORE: ''  # '20180115220926508503_jyugpu0_places2_NORMAL_wgan_gp_full_model'
 
 GAN: 'wgan_gp'  # 'dcgan', 'lsgan', 'wgan_gp', 'one_wgan_gp'
@@ -12,6 +12,7 @@ WGAN_GP_LAMBDA: 10
 COARSE_L1_ALPHA: 1.2
 L1_LOSS_ALPHA: 1.2
 AE_LOSS_ALPHA: 1.2
+PERCEPTUAL_LOSS_ALPHA: 1.0
 GAN_WITH_MASK: False
 DISCOUNTED_MASK: True
 RANDOM_SEED: False

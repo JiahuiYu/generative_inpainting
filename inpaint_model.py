@@ -135,7 +135,7 @@ class InpaintCAModel(Model):
 
     def build_wgan_local_discriminator_verbose(self, x, reuse=False, training=True):
         with tf.variable_scope('discriminator_local', reuse=reuse):
-            cnum = 64  # todo: check, do we need activation ?
+            cnum = 64
             x1 = dis_conv(x, cnum, name='conv1', training=training)
             x2 = dis_conv(x1, cnum * 2, name='conv2', training=training)
             x3 = dis_conv(x2, cnum * 4, name='conv3', training=training)
@@ -294,13 +294,13 @@ class InpaintCAModel(Model):
             losses['g_loss'] += config.L1_LOSS_ALPHA * losses['l1_loss']
 
         ### perceptual loss
-        PERCEPTUAL_LOSS_ALPHA = 1  # todo: check what is the alpha they chose in the article
-        losses['g_loss'] += PERCEPTUAL_LOSS_ALPHA * losses['perceptual_loss']
+        losses['g_loss'] += config.PERCEPTUAL_LOSS_ALPHA * losses['perceptual_loss']
         scalar_summary('losses/perceptual_loss', losses['perceptual_loss'])
         ###
 
         logger.info('Set L1_LOSS_ALPHA to %f' % config.L1_LOSS_ALPHA)
         logger.info('Set GAN_LOSS_ALPHA to %f' % config.GAN_LOSS_ALPHA)
+        logger.info('Set PERCEPTUAL_LOSS_ALPHA to %f' % config.PERCEPTUAL_LOSS_ALPHA)
         if config.AE_LOSS:
             losses['g_loss'] += config.AE_LOSS_ALPHA * losses['ae_loss']
             logger.info('Set AE_LOSS_ALPHA to %f' % config.AE_LOSS_ALPHA)

@@ -47,8 +47,8 @@
       <file leaf-file-name="inpaint.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/inpaint.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+            <state relative-caret-position="204">
+              <caret line="69" column="13" lean-forward="true" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -56,8 +56,8 @@
       <file leaf-file-name="inpaint_model.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/inpaint_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="299" column="11" lean-forward="true" selection-start-line="299" selection-start-column="11" selection-end-line="299" selection-end-column="11" />
+            <state relative-caret-position="198">
+              <caret line="160" column="58" selection-start-line="160" selection-start-column="58" selection-end-line="160" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -110,7 +110,10 @@
       <find>texture</find>
       <find>places</find>
       <find>mask_img</find>
+      <find>Set L1_LOSS_ALPHA to</find>
       <find>perceptual_loss</find>
+      <find>PERCEPTUAL</find>
+      <find>CONFIG</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -310,12 +313,13 @@
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1953125" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.2376302" side_tool="true" visible="true" weight="0.098870054" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7623698" visible="true" weight="0.098870054" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.23828125" side_tool="true" visible="true" weight="0.38418078" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49739584" weight="0.32905984" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.76171875" visible="true" weight="0.38418078" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4984375" weight="0.25108224" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49804688" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7630208" weight="0.33225107" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -324,7 +328,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49739584" weight="0.32905984" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -528,15 +531,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/inpaint_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="299" column="11" lean-forward="true" selection-start-line="299" selection-start-column="11" selection-end-line="299" selection-end-column="11" />
+        <state relative-caret-position="198">
+          <caret line="160" column="58" selection-start-line="160" selection-start-column="58" selection-end-line="160" selection-end-column="58" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/inpaint.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+        <state relative-caret-position="204">
+          <caret line="69" column="13" lean-forward="true" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
         </state>
       </provider>
     </entry>
