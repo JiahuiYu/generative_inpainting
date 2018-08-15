@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68e48120-8ffa-4a89-ba1e-acbc5314d62c" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/inpaint.yml" beforeDir="false" afterPath="$PROJECT_DIR$/inpaint.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inpaint_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/inpaint_model.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,20 +44,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="inpaint.yml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="inpaint.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/inpaint.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="85" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="85" />
+            <state relative-caret-position="340">
+              <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="inpaint_model.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="inpaint_model.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/inpaint_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="242" selection-start-line="242" selection-end-line="249" selection-end-column="30" />
+            <state relative-caret-position="236">
+              <caret line="299" column="11" lean-forward="true" selection-start-line="299" selection-start-column="11" selection-end-line="299" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -109,6 +110,7 @@
       <find>texture</find>
       <find>places</find>
       <find>mask_img</find>
+      <find>perceptual_loss</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -124,17 +126,18 @@
         <option value="$PROJECT_DIR$/download_data_set.py" />
         <option value="$PROJECT_DIR$/common.py" />
         <option value="$PROJECT_DIR$/prepare_flist.py" />
-        <option value="$PROJECT_DIR$/inpaint.yml" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/common_utils.py" />
         <option value="$PROJECT_DIR$/inpaint_model.py" />
+        <option value="$PROJECT_DIR$/inpaint.yml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="951" />
-    <option name="width" value="978" />
-    <option name="height" value="1039" />
+    <option name="x" value="-187" />
+    <option name="y" value="-8" />
+    <option name="width" value="1920" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -147,11 +150,6 @@
             <path>
               <item name="generative_inpainting" type="b2602c69:ProjectViewProjectNode" />
               <item name="generative_inpainting" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="generative_inpainting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="generative_inpainting" type="462c0819:PsiDirectoryNode" />
-              <item name="model_logs" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -310,14 +308,14 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1953125" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1953125" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.23697917" side_tool="true" visible="true" weight="0.19774011" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7630208" visible="true" weight="0.19774011" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.2376302" side_tool="true" visible="true" weight="0.098870054" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7623698" visible="true" weight="0.098870054" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4986979" weight="0.32905984" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4984375" weight="0.25108224" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7630208" weight="0.33225107" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -521,13 +519,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inpaint.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="85" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/neuralgym/ops/gan_ops.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
@@ -537,8 +528,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/inpaint_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="242" selection-start-line="242" selection-end-line="249" selection-end-column="30" />
+        <state relative-caret-position="236">
+          <caret line="299" column="11" lean-forward="true" selection-start-line="299" selection-start-column="11" selection-end-line="299" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inpaint.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
         </state>
       </provider>
     </entry>

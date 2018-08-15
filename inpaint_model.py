@@ -294,7 +294,7 @@ class InpaintCAModel(Model):
             losses['g_loss'] += config.L1_LOSS_ALPHA * losses['l1_loss']
 
         ### perceptual loss
-        PERCEPTUAL_LOSS_ALPHA = 0.3  # todo: check what is the alpha they chose in the article
+        PERCEPTUAL_LOSS_ALPHA = 1  # todo: check what is the alpha they chose in the article
         losses['g_loss'] += PERCEPTUAL_LOSS_ALPHA * losses['perceptual_loss']
         scalar_summary('losses/perceptual_loss', losses['perceptual_loss'])
         ###

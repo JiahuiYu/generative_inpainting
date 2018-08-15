@@ -2,7 +2,7 @@
 DATASET: celeba # 'celebahq' 'tmnist', 'dtd', 'places2', 'celeba', 'imagenet', 'cityscapes'
 RANDOM_CROP: False
 VAL: False
-LOG_DIR: placesa_small_perceptual_loss_log_dir
+LOG_DIR: placesa_small_ploss_1_log_dir
 MODEL_RESTORE: ''  # '20180115220926508503_jyugpu0_places2_NORMAL_wgan_gp_full_model'
 
 GAN: 'wgan_gp'  # 'dcgan', 'lsgan', 'wgan_gp', 'one_wgan_gp'
@@ -18,8 +18,8 @@ RANDOM_SEED: False
 PADDING: 'SAME'
 
 # training
-NUM_GPUS: 0
-GPU_ID: -1 #indicate select any available one, otherwise select gpu ID, e.g. [0,1,3]
+NUM_GPUS: 1
+GPU_ID: 0 #indicate select any available one, otherwise select gpu ID, e.g. [0,1,3]
 TRAIN_SPE: 10000
 MAX_ITERS: 100000
 VIZ_MAX_OUT: 10
