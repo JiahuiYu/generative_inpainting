@@ -2,26 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68e48120-8ffa-4a89-ba1e-acbc5314d62c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/common_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/1[20_30][10_10].png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/1[27_27][10_10].png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/2[20_30][10_10].png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/2[27_27][10_10].png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/3[20_30][10_10].png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/3[27_27][10_10].png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/4[20_30][10_10].png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/4[27_27][10_10].png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/5[20_30][10_10].png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/5[27_27][10_10].png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/mask[20_30][10_10].png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/mask[27_27][10_10].png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/output.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/output1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/output2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/output3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/output4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inpaint_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/inpaint_model.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,11 +13,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="train.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/train.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gan_ops.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/neuralgym/ops/gan_ops.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="65" column="4" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="inpaint.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inpaint.yml">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+              <caret line="5" column="85" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="85" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="inpaint_model.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/inpaint_model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="242" selection-start-line="242" selection-end-line="249" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -44,7 +64,7 @@
       <file leaf-file-name="common_utils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
+            <state relative-caret-position="2380">
               <caret line="148" column="6" selection-start-line="148" selection-start-column="6" selection-end-line="148" selection-end-column="6" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
@@ -56,7 +76,7 @@
       <file leaf-file-name="codecs.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/codecs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
+            <state relative-caret-position="5270">
               <caret line="310" selection-start-line="310" selection-end-line="310" />
             </state>
           </provider>
@@ -104,24 +124,23 @@
         <option value="$PROJECT_DIR$/download_data_set.py" />
         <option value="$PROJECT_DIR$/common.py" />
         <option value="$PROJECT_DIR$/prepare_flist.py" />
-        <option value="$PROJECT_DIR$/inpaint_model.py" />
         <option value="$PROJECT_DIR$/inpaint.yml" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/common_utils.py" />
+        <option value="$PROJECT_DIR$/inpaint_model.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="952" />
-    <option name="width" value="977" />
-    <option name="height" value="1038" />
+    <option name="x" value="951" />
+    <option name="width" value="978" />
+    <option name="height" value="1039" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -138,11 +157,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Colors" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -165,7 +185,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.common_utils">
+  <component name="RunManager" selected="Python.train">
     <configuration name="common_utils" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="generative_inpainting" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -265,8 +285,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.common_utils" />
         <item itemvalue="Python.train" />
+        <item itemvalue="Python.common_utils" />
         <item itemvalue="Python.prepare_flist" />
         <item itemvalue="Python.convert_suff" />
         <item itemvalue="Python.download_data_set" />
@@ -287,18 +307,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19583334" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1953125" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.23697917" side_tool="true" visible="true" weight="0.33225107" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6359375" weight="0.22727273" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.23697917" side_tool="true" visible="true" weight="0.19774011" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7630208" visible="true" weight="0.19774011" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4986979" weight="0.32905984" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7630208" visible="true" weight="0.33225107" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7630208" weight="0.33225107" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -391,8 +411,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test_data/1_.png" />
-    <entry file="file://$PROJECT_DIR$/test_data/1_27_27_10_10_.png" />
     <entry file="file://$PROJECT_DIR$/mask[27_27][10_10].png" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/matplotlib/axes/_axes.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -419,9 +437,7 @@
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/test_cases/1[27_27][10_10].png" />
-    <entry file="file://$PROJECT_DIR$/test_cases/mask[27_27][10_10].png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/mask[27_27][10_10].png" />
     <entry file="file://$PROJECT_DIR$/connect_moodle_gpu">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -429,148 +445,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/neuralgym_logs/20180803065220655309/neuralgym.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="49">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inpaint.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="95" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="95" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/2[27_27][10_10].png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/3[27_27][10_10].png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/1[20_30][10_10].png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/mask[20_30][10_10].png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/2[20_30][10_10].png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/3[20_30][10_10].png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/4[20_30][10_10].png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/5[20_30][10_10].png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/output.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/output1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/output2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/output3.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/output4.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/5[27_27][10_10].png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/4[27_27][10_10].png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/output11.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/2[22_22][20_20].png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/output31.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/output32.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/output41.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/output42.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/output12.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/output51.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/output52.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/output21.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/output22.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/neuralgym_logs/20180803065220655309/neuralgym.log" />
+    <entry file="file://$PROJECT_DIR$/test_cases/2[27_27][10_10].png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/3[27_27][10_10].png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/1[20_30][10_10].png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/mask[20_30][10_10].png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/2[20_30][10_10].png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/3[20_30][10_10].png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/4[20_30][10_10].png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/5[20_30][10_10].png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/output.png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/output1.png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/output2.png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/output3.png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/output4.png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/5[27_27][10_10].png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/4[27_27][10_10].png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/output11.png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/2[22_22][20_20].png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/output31.png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/output32.png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/output41.png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/output42.png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/output12.png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/output51.png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/output52.png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/output21.png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/output22.png" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
+        <state relative-caret-position="5270">
           <caret line="310" selection-start-line="310" selection-end-line="310" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/m[6_6][25_38]/102.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/m[6_6][25_38]/101.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/m[6_6][25_38]/100.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/m[6_6][25_38]/10.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/m[9_7][14_14].png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/m[6_6][25_38].png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/m[6_6][25_38]/1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/m[6_6][25_38]/102.png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/m[6_6][25_38]/101.png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/m[6_6][25_38]/100.png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/m[6_6][25_38]/10.png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/m[9_7][14_14].png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/m[6_6][25_38].png" />
+    <entry file="file://$PROJECT_DIR$/test_cases/m[6_6][25_38]/1.png" />
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="19" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_cases/m[21_13][10_32]/102.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test_cases/m[21_13][10_32]/102.png" />
     <entry file="file://$PROJECT_DIR$/common_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
+        <state relative-caret-position="2380">
           <caret line="148" column="6" selection-start-line="148" selection-start-column="6" selection-end-line="148" selection-end-column="6" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
@@ -580,8 +506,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inpaint.yml">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+          <caret line="5" column="85" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/neuralgym/ops/gan_ops.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="65" column="4" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inpaint_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="242" selection-start-line="242" selection-end-line="249" selection-end-column="30" />
         </state>
       </provider>
     </entry>

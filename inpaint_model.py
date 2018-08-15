@@ -240,7 +240,14 @@ class InpaintCAModel(Model):
         # wgan with gradient penalty
         if config.GAN == 'wgan_gp':
             # seperate gan
-            pos_neg_local, pos_neg_global = self.build_wgan_discriminator(local_patch_batch_pos_neg, batch_pos_neg, training=training, reuse=reuse)
+            # calculate wgan discriminator loss and perceptual loss
+            pos_neg_local, pos_neg_global = self.build_wgan_discriminator(
+                local_patch_batch_pos_neg,
+                batch_pos_neg,
+                training=training,
+                reuse=reuse,
+                calc_perceptual_loss=True,
+                losses=losses)
             pos_local, neg_local = tf.split(pos_neg_local, 2)
             pos_global, neg_global = tf.split(pos_neg_global, 2)
             # wgan loss
@@ -251,7 +258,10 @@ class InpaintCAModel(Model):
             # gp
             interpolates_local = random_interpolates(local_patch_batch_pos, local_patch_batch_complete)
             interpolates_global = random_interpolates(batch_pos, batch_complete)
-            dout_local, dout_global = self.build_wgan_discriminator(interpolates_local, interpolates_global, reuse=True)
+            dout_local, dout_global = self.build_wgan_discriminator(
+                interpolates_local,
+                interpolates_global,
+                reuse=True)
             # apply penalty
             penalty_local = gradients_penalty(interpolates_local, dout_local, mask=local_patch_mask)
             penalty_global = gradients_penalty(interpolates_global, dout_global, mask=mask)
