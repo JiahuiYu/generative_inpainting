@@ -155,7 +155,8 @@ class InpaintCAModel(Model):
 
     def get_perceptual_loss(self, target, predicted, name):
         with tf.variable_scope(name):
-            loss = tl.cost.absolute_difference_error(target, predicted)
+            # loss = tl.cost.absolute_difference_error(target, predicted)
+            loss = tf.reduce_mean(tf.abs(target - predicted))
             scalar_summary('loss', loss)
             scalar_summary('pos_value_avg', tf.reduce_mean(target))
             scalar_summary('neg_value_avg', tf.reduce_mean(predicted))
@@ -176,9 +177,9 @@ class InpaintCAModel(Model):
                     fl_neg, fl_pos = tf.split(feats_local_flat, 2)
                     if (losses['perceptual_loss'] is None):
                         losses['perceptual_loss'] = 0
-                    losses['perceptual_loss'] += self.get_perceptual_loss(fl_neg, fl_pos, name="loss_local")
+                    losses['perceptual_loss'] += self.get_perceptual_loss(fl_pos, fl_neg, name="loss_local")
                     fg_neg, fg_pos = tf.split(feats_global_flat, 2)
-                    losses['perceptual_loss'] += self.get_perceptual_loss(fg_neg, fg_pos, name="loss_global")
+                    losses['perceptual_loss'] += self.get_perceptual_loss(fg_pos, fg_neg, name="loss_global")
             else:
                 dlocal = self.build_wgan_local_discriminator(batch_local, reuse=reuse, training=training)
                 dglobal = self.build_wgan_global_discriminator(batch_global, reuse=reuse, training=training)
