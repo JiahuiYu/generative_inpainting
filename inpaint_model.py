@@ -175,7 +175,7 @@ class InpaintCAModel(Model):
                     feats_local_flat = flatten(feats_local, "flatten_local")
                     feats_global_flat = flatten(feats_global, "flatten_global")
                     fl_neg, fl_pos = tf.split(feats_local_flat, 2)
-                    if (losses['perceptual_loss'] is None):
+                    if ('perceptual_loss' in losses):
                         losses['perceptual_loss'] = 0
                     losses['perceptual_loss'] += self.get_perceptual_loss(fl_pos, fl_neg, name="loss_local")
                     fg_neg, fg_pos = tf.split(feats_global_flat, 2)
