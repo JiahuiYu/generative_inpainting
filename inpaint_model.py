@@ -155,8 +155,8 @@ class InpaintCAModel(Model):
 
     def get_perceptual_loss(self, target, predicted, name):
         with tf.variable_scope(name):
-            # loss = tl.cost.absolute_difference_error(target, predicted)
-            loss = tf.reduce_mean(tf.abs(target - predicted))
+            loss = tl.cost.absolute_difference_error(target, predicted)
+            # loss = tf.reduce_mean(tf.abs(target - predicted))
             scalar_summary('loss', loss)
             scalar_summary('pos_value_avg', tf.reduce_mean(target))
             scalar_summary('neg_value_avg', tf.reduce_mean(predicted))
@@ -264,7 +264,9 @@ class InpaintCAModel(Model):
             dout_local, dout_global = self.build_wgan_discriminator(
                 interpolates_local,
                 interpolates_global,
-                reuse=True
+                reuse=True,
+                calc_perceptual_loss=True,
+                losses=losses
             )
             # apply penalty
             penalty_local = gradients_penalty(interpolates_local, dout_local, mask=local_patch_mask)
