@@ -1,8 +1,8 @@
 # parameters
-DATASET: 'celebahq'  # 'tmnist', 'dtd', 'places2', 'celeba', 'imagenet', 'cityscapes'
+DATASET: 'sylvia'  # 'tmnist', 'dtd', 'places2', 'celeba', 'imagenet', 'cityscapes'
 RANDOM_CROP: False
 VAL: False
-LOG_DIR: full_model_celeba_hq_256
+LOG_DIR: full_model_sylvia_hq_256
 MODEL_RESTORE: ''  # '20180115220926508503_jyugpu0_places2_NORMAL_wgan_gp_full_model'
 
 GAN: 'wgan_gp'  # 'dcgan', 'lsgan', 'wgan_gp', 'one_wgan_gp'
@@ -30,6 +30,10 @@ VAL_PSTEPS: 1000
 
 # data
 DATA_FLIST:
+  sylvia: [
+    'data/training_images.flist',
+    'data/validation_images.flist'
+  ]
   # https://github.com/JiahuiYu/progressive_growing_of_gans_tf
   celebahq: [
     'data/celeba_hq/train_shuffled.flist',
