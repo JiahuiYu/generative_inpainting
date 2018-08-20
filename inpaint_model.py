@@ -264,9 +264,7 @@ class InpaintCAModel(Model):
             dout_local, dout_global = self.build_wgan_discriminator(
                 interpolates_local,
                 interpolates_global,
-                reuse=True,
-                calc_perceptual_loss=True,
-                losses=losses
+                reuse=True
             )
             # apply penalty
             penalty_local = gradients_penalty(interpolates_local, dout_local, mask=local_patch_mask)
