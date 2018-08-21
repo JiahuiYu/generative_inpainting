@@ -249,7 +249,7 @@ class InpaintCAModel(Model):
                 batch_pos_neg,
                 training=training,
                 reuse=reuse,
-                calc_perceptual_loss=True,
+                calc_perceptual_loss=config.PERCEPTUAL_LOSS,
                 losses=losses)
             pos_local, neg_local = tf.split(pos_neg_local, 2)
             pos_global, neg_global = tf.split(pos_neg_global, 2)
@@ -264,7 +264,9 @@ class InpaintCAModel(Model):
             dout_local, dout_global = self.build_wgan_discriminator(
                 interpolates_local,
                 interpolates_global,
-                reuse=True
+                reuse=True,
+                calc_perceptual_loss=False,
+                losses=losses
             )
             # apply penalty
             penalty_local = gradients_penalty(interpolates_local, dout_local, mask=local_patch_mask)

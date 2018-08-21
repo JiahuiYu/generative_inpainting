@@ -12,15 +12,16 @@ WGAN_GP_LAMBDA: 10
 COARSE_L1_ALPHA: 1.2
 L1_LOSS_ALPHA: 1.2
 AE_LOSS_ALPHA: 1.2
-PERCEPTUAL_LOSS_ALPHA: 0.01
+PERCEPTUAL_LOSS_ALPHA: 1
+PERCEPTUAL_LOSS: True
 GAN_WITH_MASK: False
 DISCOUNTED_MASK: True
 RANDOM_SEED: False
 PADDING: 'SAME'
 
 # training
-NUM_GPUS: 1
-GPU_ID: 0 #indicate select any available one, otherwise select gpu ID, e.g. [0,1,3]
+NUM_GPUS: 0
+GPU_ID: -1 #indicate select any available one, otherwise select gpu ID, e.g. [0,1,3]
 TRAIN_SPE: 10000
 MAX_ITERS: 100000
 VIZ_MAX_OUT: 10
