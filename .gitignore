@@ -1,3 +1,10 @@
 model_logs
 neuralgym_logs
 data
+__pycache__
+misc
+test_cases
+idea
+.idea
+*.npy
+*.png
