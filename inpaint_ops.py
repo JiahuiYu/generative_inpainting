@@ -1,13 +1,16 @@
 import logging
+import math
 
 import cv2
 import numpy as np
 import tensorflow as tf
 from tensorflow.contrib.framework.python.ops import add_arg_scope
+from PIL import Image, ImageDraw
 
 from neuralgym.ops.layers import resize
 from neuralgym.ops.layers import *
 from neuralgym.ops.loss_ops import *
+from neuralgym.ops.gan_ops import *
 from neuralgym.ops.summary_ops import *
 
 
@@ -42,7 +45,14 @@ def gen_conv(x, cnum, ksize, stride=1, rate=1, name='conv',
         padding = 'VALID'
     x = tf.layers.conv2d(
         x, cnum, ksize, stride, dilation_rate=rate,
-        activation=activation, padding=padding, name=name)
+        activation=None, padding=padding, name=name)
+    if cnum == 3 or activation is None:
+        # conv for output
+        return x
+    x, y = tf.split(x, 2, 3)
+    x = activation(x)
+    y = tf.nn.sigmoid(y)
+    x = x * y
     return x
 
 
@@ -87,43 +97,37 @@ def dis_conv(x, cnum, ksize=5, stride=2, name='conv', training=True):
         tf.Tensor: output
 
     """
-    x = tf.layers.conv2d(x, cnum, ksize, stride, 'SAME', name=name)
+    x = conv2d_spectral_norm(x, cnum, ksize, stride, 'SAME', name=name)
     x = tf.nn.leaky_relu(x)
     return x
 
 
-def random_bbox(config):
-    """Generate a random tlhw with configuration.
-
-    Args:
-        config: Config should have configuration including IMG_SHAPES,
-            VERTICAL_MARGIN, HEIGHT, HORIZONTAL_MARGIN, WIDTH.
+def random_bbox(FLAGS):
+    """Generate a random tlhw.
 
     Returns:
         tuple: (top, left, height, width)
 
     """
-    img_shape = config.IMG_SHAPES
+    img_shape = FLAGS.img_shapes
     img_height = img_shape[0]
     img_width = img_shape[1]
-    maxt = img_height - config.VERTICAL_MARGIN - config.HEIGHT
-    maxl = img_width - config.HORIZONTAL_MARGIN - config.WIDTH
+    maxt = img_height - FLAGS.vertical_margin - FLAGS.height
+    maxl = img_width - FLAGS.horizontal_margin - FLAGS.width
     t = tf.random_uniform(
-        [], minval=config.VERTICAL_MARGIN, maxval=maxt, dtype=tf.int32)
+        [], minval=FLAGS.vertical_margin, maxval=maxt, dtype=tf.int32)
     l = tf.random_uniform(
-        [], minval=config.HORIZONTAL_MARGIN, maxval=maxl, dtype=tf.int32)
-    h = tf.constant(config.HEIGHT)
-    w = tf.constant(config.WIDTH)
+        [], minval=FLAGS.horizontal_margin, maxval=maxl, dtype=tf.int32)
+    h = tf.constant(FLAGS.height)
+    w = tf.constant(FLAGS.width)
     return (t, l, h, w)
 
 
-def bbox2mask(bbox, config, name='mask'):
+def bbox2mask(FLAGS, bbox, name='mask'):
     """Generate mask tensor from bbox.
 
     Args:
-        bbox: configuration tuple, (top, left, height, width)
-        config: Config should have configuration including IMG_SHAPES,
-            MAX_DELTA_HEIGHT, MAX_DELTA_WIDTH.
+        bbox: tuple, (top, left, height, width)
 
     Returns:
         tf.Tensor: output with shape [1, H, W, 1]
@@ -137,14 +141,82 @@ def bbox2mask(bbox, config, name='mask'):
              bbox[1]+w:bbox[1]+bbox[3]-w, :] = 1.
         return mask
     with tf.variable_scope(name), tf.device('/cpu:0'):
-        img_shape = config.IMG_SHAPES
+        img_shape = FLAGS.img_shapes
         height = img_shape[0]
         width = img_shape[1]
         mask = tf.py_func(
             npmask,
             [bbox, height, width,
-             config.MAX_DELTA_HEIGHT, config.MAX_DELTA_WIDTH],
+             FLAGS.max_delta_height, FLAGS.max_delta_width],
             tf.float32, stateful=False)
+        mask.set_shape([1] + [height, width] + [1])
+    return mask
+
+
+def brush_stroke_mask(FLAGS, name='mask'):
+    """Generate mask tensor from bbox.
+
+    Returns:
+        tf.Tensor: output with shape [1, H, W, 1]
+
+    """
+    min_num_vertex = 4
+    max_num_vertex = 12
+    mean_angle = 2*math.pi / 5
+    angle_range = 2*math.pi / 15
+    min_width = 12
+    max_width = 40
+    def generate_mask(H, W):
+        average_radius = math.sqrt(H*H+W*W) / 8
+        mask = Image.new('L', (W, H), 0)
+
+        for _ in range(np.random.randint(1, 4)):
+            num_vertex = np.random.randint(min_num_vertex, max_num_vertex)
+            angle_min = mean_angle - np.random.uniform(0, angle_range)
+            angle_max = mean_angle + np.random.uniform(0, angle_range)
+            angles = []
+            vertex = []
+            for i in range(num_vertex):
+                if i % 2 == 0:
+                    angles.append(2*math.pi - np.random.uniform(angle_min, angle_max))
+                else:
+                    angles.append(np.random.uniform(angle_min, angle_max))
+
+            h, w = mask.size
+            vertex.append((int(np.random.randint(0, w)), int(np.random.randint(0, h))))
+            for i in range(num_vertex):
+                r = np.clip(
+                    np.random.normal(loc=average_radius, scale=average_radius//2),
+                    0, 2*average_radius)
+                new_x = np.clip(vertex[-1][0] + r * math.cos(angles[i]), 0, w)
+                new_y = np.clip(vertex[-1][1] + r * math.sin(angles[i]), 0, h)
+                vertex.append((int(new_x), int(new_y)))
+
+            draw = ImageDraw.Draw(mask)
+            width = int(np.random.uniform(min_width, max_width))
+            draw.line(vertex, fill=1, width=width)
+            for v in vertex:
+                draw.ellipse((v[0] - width//2,
+                              v[1] - width//2,
+                              v[0] + width//2,
+                              v[1] + width//2),
+                             fill=1)
+
+        if np.random.normal() > 0:
+            mask.transpose(Image.FLIP_LEFT_RIGHT)
+        if np.random.normal() > 0:
+            mask.transpose(Image.FLIP_TOP_BOTTOM)
+        mask = np.asarray(mask, np.float32)
+        mask = np.reshape(mask, (1, H, W, 1))
+        return mask
+    with tf.variable_scope(name), tf.device('/cpu:0'):
+        img_shape = FLAGS.img_shapes
+        height = img_shape[0]
+        width = img_shape[1]
+        mask = tf.py_func(
+            generate_mask,
+            [height, width],
+            tf.float32, stateful=True)
         mask.set_shape([1] + [height, width] + [1])
     return mask
 
@@ -179,38 +251,6 @@ def resize_mask_like(mask, x):
         mask, to_shape=x.get_shape().as_list()[1:3],
         func=tf.image.resize_nearest_neighbor)
     return mask_resize
-
-
-def spatial_discounting_mask(config):
-    """Generate spatial discounting mask constant.
-
-    Spatial discounting mask is first introduced in publication:
-        Generative Image Inpainting with Contextual Attention, Yu et al.
-
-    Args:
-        config: Config should have configuration including HEIGHT, WIDTH,
-            DISCOUNTED_MASK.
-
-    Returns:
-        tf.Tensor: spatial discounting mask
-
-    """
-    gamma = config.SPATIAL_DISCOUNTING_GAMMA
-    shape = [1, config.HEIGHT, config.WIDTH, 1]
-    if config.DISCOUNTED_MASK:
-        logger.info('Use spatial discounting l1 loss.')
-        mask_values = np.ones((config.HEIGHT, config.WIDTH))
-        for i in range(config.HEIGHT):
-            for j in range(config.WIDTH):
-                mask_values[i, j] = max(
-                    gamma**min(i, config.HEIGHT-i),
-                    gamma**min(j, config.WIDTH-j))
-        mask_values = np.expand_dims(mask_values, 0)
-        mask_values = np.expand_dims(mask_values, 3)
-        mask_values = mask_values
-    else:
-        mask_values = np.ones(shape)
-    return tf.constant(mask_values, dtype=tf.float32, shape=shape)
 
 
 def contextual_attention(f, b, mask=None, ksize=3, stride=1, rate=1,
@@ -320,7 +360,7 @@ def contextual_attention(f, b, mask=None, ksize=3, stride=1, rate=1,
     # # case2: visualize which pixels are attended
     # flow = highlight_flow_tf(offsets * tf.cast(mask, tf.int32))
     if rate != 1:
-        flow = resize(flow, scale=rate, func=tf.image.resize_nearest_neighbor)
+        flow = resize(flow, scale=rate, func=tf.image.resize_bilinear)
     return y, flow
 
 
