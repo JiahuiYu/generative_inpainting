@@ -1,18 +1,15 @@
-# Generative Image Inpainting with Contextual Attention
+# Generative Image Inpainting
 
-[CVPR 2018 Paper](https://arxiv.org/abs/1801.07892) | [ArXiv](https://arxiv.org/abs/1801.07892) | [Project](http://jiahuiyu.com/deepfill) | [Demo](http://jiahuiyu.com/deepfill) | [YouTube](https://youtu.be/xz1ZvcdhgQ0) | [BibTex](#citing)
+An open source framework for generative image inpainting task, with the support of [Contextual Attention](https://arxiv.org/abs/1801.07892) (CVPR 2018) and [Gated Convolution](https://arxiv.org/abs/1806.03589) (ICCV 2019 Oral).
 
-**Update (Jun, 2018)**:
-1. The tech report of our new image inpainting system DeepFillv2 is released. [ArXiv](http://arxiv.org/abs/1806.03589) | [Project](http://jiahuiyu.com/deepfill2)
-2. We also released recorded demo video [YouTube](https://youtu.be/xz1ZvcdhgQ0) based on DeepFillv1 (CVPR 2018), as well as video [YouTube](https://youtu.be/uZkEi9Y2dj4) of DeepFillv2. Best viewed with highest resolution 1080p.
-3. DeepFillv1 is trained and mainly works on rectangular masks, while DeepFillv2 can complete images on free-form masks with user guidance as an option.
+**For the code of previous version (DeepFill v1), please checkout branch [v1.0.0](https://github.com/JiahuiYu/generative_inpainting/tree/v1.0.0).**
 
+[CVPR 2018 Paper](https://arxiv.org/abs/1801.07892) | [ICCV 2019 Oral Paper](https://arxiv.org/abs/1806.03589)| [Project](http://jiahuiyu.com/deepfill) | [Demo](http://jiahuiyu.com/deepfill) | [YouTube v1](https://youtu.be/xz1ZvcdhgQ0) | [YouTube v2](https://youtu.be/uZkEi9Y2dj4) | [BibTex](#citing)
 
-<img src="https://user-images.githubusercontent.com/22609465/35317673-845730e4-009d-11e8-920e-62ea0a25f776.png" width="425"/> <img src="https://user-images.githubusercontent.com/22609465/35317674-846418ea-009d-11e8-90c7-652e32cef798.png" width="425"/>
-<img src="https://user-images.githubusercontent.com/22609465/35317678-848aa3fc-009d-11e8-84a5-01be01a31fc6.png" width="210"/> <img src="https://user-images.githubusercontent.com/22609465/35317679-8496ab84-009d-11e8-945c-e1f957b04288.png" width="210"/>
-<img src="https://user-images.githubusercontent.com/22609465/35347783-c5e948fe-00fb-11e8-819c-8212d4edcfd3.png" width="210"/> <img src="https://user-images.githubusercontent.com/22609465/35347784-c5f4242c-00fb-11e8-8e46-5ad224e15096.png" width="210"/>
+<img src="https://raw.githubusercontent.com/JiahuiYu/generative_inpainting/v2.0.0/examples/places2/case1_raw.png" width="280"/> <img src="https://raw.githubusercontent.com/JiahuiYu/generative_inpainting/v2.0.0/examples/places2/case1_input.png" width="280"/> <img src="https://raw.githubusercontent.com/JiahuiYu/generative_inpainting/v2.0.0/examples/places2/case1_output.png" width="280"/> 
+<img src="https://raw.githubusercontent.com/JiahuiYu/generative_inpainting/v2.0.0/examples/places2/case4_raw.png" width="280"/> <img src="https://raw.githubusercontent.com/JiahuiYu/generative_inpainting/v2.0.0/examples/places2/case4_input.png" width="280"/> <img src="https://raw.githubusercontent.com/JiahuiYu/generative_inpainting/v2.0.0/examples/places2/case4_output.png" width="280"/>
 
-Example inpainting results of our method on images of natural scene (Places2), face (CelebA) and object (ImageNet). Missing regions are shown in white. In each pair, the left is input image and right is the direct output of our trained generative neural networks without any post-processing.
+Free-form image inpainting results by our system built on gated convolution. Each triad shows original image, free-form input and our result from left to right. The system supports free-form mask and guidance like user sketch. It helps user remove distracting objects, modify image layouts and edit faces in images.
 
 ## Run
 
@@ -34,19 +31,15 @@ Example inpainting results of our method on images of natural scene (Places2), f
 
 ## Pretrained models
 
-[CelebA-HQ](https://drive.google.com/open?id=1lpluFXyWDxTY6wcjixQGWX8jxUUMlyBW) | [Places2](https://drive.google.com/open?id=1M3AFy7x9DqXaI-fINSynW7FJSXYROfv-) | [CelebA](https://drive.google.com/open?id=1sP8ViF3mxUMN--xpKqonEeW9d8S8pJEo) | [ImageNet](https://drive.google.com/open?id=136APWSdPRAF7-XoS8sMBTLV-X3f-ogE0) | 
+[Places2](https://drive.google.com/drive/folders/1y7Irxm3HSHGvp546hZdAZwuNmhLUVcjO?usp=sharing) | [CelebA-HQ](https://drive.google.com/drive/folders/1uvcDgMer-4hgWlm6_G9xjvEQGP8neW15?usp=sharing)
 
 Download the model dirs and put it under `model_logs/` (rename `checkpoint.txt` to `checkpoint` because google drive automatically add ext after download). Run testing or resume training as described above. All models are trained with images of resolution 256x256 and largest hole size 128x128, above which the results may be deteriorated. We provide several example test cases. Please run:
 
 ```bash
 # Places2 512x680 input
-python test.py --image examples/places2/wooden_input.png --mask examples/places2/wooden_mask.png --output examples/output.png --checkpoint_dir model_logs/release_places2_256
-# CelebA 256x256 input
-python test.py --image examples/celeba/celebahr_patches_164036_input.png --mask examples/center_mask_256.png --output examples/output.png --checkpoint_dir model_logs/release_celeba_256/
+python test.py --image examples/places2/case1_input.png --mask examples/places2/case1_mask.png --output examples/places2/case1_output.png --checkpoint_dir model_logs/release_places2_256
 # CelebA-HQ 256x256 input
-# Please visit CelebA-HQ demo at: jhyu.me/demo
-# ImageNet 256x256 input
-python test.py --image examples/imagenet/imagenet_patches_ILSVRC2012_val_00000827_input.png --mask examples/center_mask_256.png --output examples/output.png --checkpoint_dir model_logs/release_imagenet_256
+# Please visit CelebA-HQ demo at: jhyu.me/deepfill
 ```
 
 **Note:** Please make sure the mask file completely cover the masks in input file. You may check it with saving a new image to visualize `cv2.imwrite('new.png', img - mask)`.
@@ -60,40 +53,6 @@ Visualization on [TensorBoard](https://www.tensorflow.org/programmers_guide/summ
 CC 4.0 Attribution-NonCommercial International
 
 The software is for educaitonal and academic research purpose only.
-
-## FAQ
-
-
-* Can other types of GANs work in current setting?
-
-The proposed contextual attention module is independent of GAN losses. We experimented with other types of GANs in Section 5.1 and WGAN-GP is used by default. Intuitively, during training, pixel-wise reconstruction loss directly regresses holes to the current ground truth image, while WGANs implicitly learn to match potentially correct images and supervise the generator with adversarial gradients. Both WGANs and reconstruction loss measure image distance with pixel-wise L1.
-
-* How to determine if G is converged?
-
-We use a slightly modified WGAN-GP for adversarial loss. WGANs are demonstrated to have more meaningful convergent curves than others, which is also confirmed in our experiments.
-
-* The split of train/test data in experiments.
-
-We use the default training/validation data split from Places2 and CelebA. For CelebA, training/validation have no identity overlap. For DTD texture dataset which has no default split, we sample 30 images for validation.
-
-* How does random mask generated?
-
-Please check out function `random_bbox` and `bbox2mask` in file [inpaint_ops.py](/inpaint_ops.py).
-
-* Parameters to handle the memory overhead.
-
-Please check out function `contextual_attention` in file [inpaint_ops.py](/inpaint_ops.py).
-
-* How to implement contextual attention?
-
-The proposed contextual attention learns where to borrow or copy feature information from known background patches to reconstruct missing patches. It is implemented with TensorFlow conv2d, extract_image_patches and conv2d_transpose API in file [inpaint_ops.py](/inpaint_ops.py). To test the implementation, one can simply apply it on RGB feature space, using image A to reconstruct image B. This special case then turns into a naive style transfer.
-
-<img src="https://user-images.githubusercontent.com/22609465/36634042-4168652a-1964-11e8-90a9-2c480b97eff7.jpg" height="150"/> <img src="https://user-images.githubusercontent.com/22609465/36634043-4178580e-1964-11e8-9ebf-69c4b6ad52a5.png" height="150"/> <img src="https://user-images.githubusercontent.com/22609465/36634040-413ee394-1964-11e8-8d23-f86a018edf01.png" height="150"/>
-
-```bash
-python inpaint_ops.py --imageA examples/style_transfer/bnw_butterfly.png  --imageB examples/style_transfer/bike.jpg --imageOut examples/style_transfer/bike_style_out.png
-```
-
 
 ## Citing
 ```
