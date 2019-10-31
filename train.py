@@ -54,7 +54,7 @@ if __name__ == "__main__":
                 static_fnames, img_shapes, nthreads=1,
                 random_crop=FLAGS.random_crop).data_pipeline(1)
             static_inpainted_images = model.build_static_infer_graph(
-                static_images, name='static_view/%d' % i)
+                FLAGS, static_images, name='static_view/%d' % i)
     # training settings
     lr = tf.get_variable(
         'lr', shape=[], trainable=False,
