@@ -219,9 +219,8 @@ class InpaintCAModel(Model):
             batch_data, edge = batch_data
             edge = edge[:, :, :, 0:1] / 255.
             edge = tf.cast(edge > FLAGS.edge_threshold, tf.float32)
-        mask = brush_stroke_mask(name='mask_c')
-        regular_mask = bbox2mask(bbox, name='mask_c')
-        irregular_mask = brush_stroke_mask(name='mask_c')
+        regular_mask = bbox2mask(FLAGS, bbox, name='mask_c')
+        irregular_mask = brush_stroke_mask(FLAGS, name='mask_c')
         mask = tf.cast(
             tf.logical_or(
                 tf.cast(irregular_mask, tf.bool),
@@ -267,7 +266,7 @@ class InpaintCAModel(Model):
         # generate mask, 1 represents masked point
         bbox = (tf.constant(FLAGS.height//2), tf.constant(FLAGS.width//2),
                 tf.constant(FLAGS.height), tf.constant(FLAGS.width))
-        return self.build_infer_graph(batch_data, bbox, name)
+        return self.build_infer_graph(FLAGS, batch_data, bbox, name)
 
 
     def build_server_graph(self, FLAGS, batch_data, reuse=False, is_training=False):
