@@ -28,6 +28,7 @@ parser.add_argument(
 
 
 if __name__ == "__main__":
+    FLAGS = ng.Config('inpaint.yml')
     ng.get_gpus(1)
     # os.environ['CUDA_VISIBLE_DEVICES'] =''
     args = parser.parse_args()
@@ -39,7 +40,7 @@ if __name__ == "__main__":
     model = InpaintCAModel()
     input_image_ph = tf.placeholder(
         tf.float32, shape=(1, args.image_height, args.image_width*2, 3))
-    output = model.build_server_graph(input_image_ph)
+    output = model.build_server_graph(FLAGS, input_image_ph)
     output = (output + 1.) * 127.5
     output = tf.reverse(output, [-1])
     output = tf.saturate_cast(output, tf.uint8)
