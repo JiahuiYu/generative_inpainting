@@ -1,5 +1,9 @@
 # Generative Image Inpainting
 
+![version](https://img.shields.io/badge/version-v2.0.0-green.svg?style=plastic)
+![pytorch](https://img.shields.io/badge/tensorflow-v1.7.0-green.svg?style=plastic)
+![license](https://img.shields.io/badge/license-CC_BY--NC-green.svg?style=plastic)
+
 An open source framework for generative image inpainting task, with the support of [Contextual Attention](https://arxiv.org/abs/1801.07892) (CVPR 2018) and [Gated Convolution](https://arxiv.org/abs/1806.03589) (ICCV 2019 Oral).
 
 **For the code of previous version (DeepFill v1), please checkout branch [v1.0.0](https://github.com/JiahuiYu/generative_inpainting/tree/v1.0.0).**
