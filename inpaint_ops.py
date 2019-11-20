@@ -160,6 +160,13 @@ def brush_stroke_mask(FLAGS, name='mask'):
         tf.Tensor: output with shape [1, H, W, 1]
 
     """
+    ### NOTE@allen### 
+    # This function generates the mask, 
+    # and is the one we will need to make a modified
+    # version of for passing the final t-snake back to
+    # I think we can leave the bounding bbox (from above)
+    # as is, because it is in place due to the fact that the GAN
+    # performs poorly at the edges
     min_num_vertex = 4
     max_num_vertex = 12
     mean_angle = 2*math.pi / 5
@@ -195,6 +202,13 @@ def brush_stroke_mask(FLAGS, name='mask'):
             draw = ImageDraw.Draw(mask)
             width = int(np.random.uniform(min_width, max_width))
             draw.line(vertex, fill=1, width=width)
+            ### NOTE@allen: ###
+            # This is where the actual drawing of the mask happens, 
+            # we essentially need these to be the verticies from
+            # our snake, and need to ensure that there are enough to
+            # create smooth lines, possibly by modifying the size 
+            # of grid cells as defined in my API proposal
+            # we would also need to flood fill the inside of the snake 
             for v in vertex:
                 draw.ellipse((v[0] - width//2,
                               v[1] - width//2,
