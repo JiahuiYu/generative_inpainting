@@ -1,4 +1,55 @@
-# Generative Image Inpainting
+# CS269 Capstone: 
+
+# Capstone-Integration
+This repository will contain the functional t-snake implementation augmented with the inpainting GAN.
+
+## How to submit code:
+This information is referenced from the Editing in a temporary branch header [here](https://drive.google.com/open?id=19pY7Lvf4Qnqd8n2r_5DisdZURmBsU94rxcJ4A-VnEp8).
+
+### Steps to success [safe way, pull requests]:
+```
+git pull master
+git checkout -b [branch name if new branch] or git checkout [branch name] # branch name should just be your first name, i.e. allen, cole, eric, joe
+git pull [branch name]
+```
+* Do some work ... time passes ... come back later ... do more work
+* Now I want to push some work
+```
+git checkout master
+git pull
+git checkout [branch name that you've been working on]
+git rebase -i master
+# Resolve merge conflicts in your editor of choice, VS code handles this pretty nicely
+# IMPORTANT! make sure everything now runs as expected
+git push [-u # if this is your first push on your branch] [branch name]
+# Some time passes, pull request approved! 
+git pull master
+git checkout [your branch]
+git rebase -i master # this step should do nothing ideally, if it does main has diverged from your branch again, which is also ok
+```
+* Do more great work
+* Rinse and repeat 
+
+### Steps to success [the unsafe way, shouldn't really do this but we can]: 
+```
+git pull master
+git checkout -b [branch name if new branch] or git checkout [branch name]
+# Do some work ... time passes ... come back later ... do more work
+# Now I want to push some work
+git checkout master
+git pull
+git checkout [branch name that you've been working on]
+git rebase -i master
+# Resolve merge conflicts in your editor of choice, VS code handles this pretty nicely
+# IMPORTANT! make sure everything now runs as expected
+git checkout master
+git merge [your branch]
+git push
+```
+
+
+------------------------------------------------------------------------------------
+# Generative Image Inpainting (Original Readme)
 
 ![version](https://img.shields.io/badge/version-v2.0.0-green.svg?style=plastic)
 ![pytorch](https://img.shields.io/badge/tensorflow-v1.7.0-green.svg?style=plastic)
