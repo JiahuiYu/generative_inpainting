@@ -56,7 +56,7 @@ Visualization on [TensorBoard](https://www.tensorflow.org/programmers_guide/summ
 
 CC 4.0 Attribution-NonCommercial International
 
-The software is for educaitonal and academic research purpose only.
+The software is for educational and academic research purposes only.
 
 ## Citing
 ```
