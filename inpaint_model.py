@@ -63,13 +63,13 @@ class InpaintCAModel(Model):
             x = gen_conv(x, 2*cnum, 3, 1, name='conv14')
             x = gen_deconv(x, cnum, name='conv15_upsample')
             x = gen_conv(x, cnum//2, 3, 1, name='conv16')
-            x = gen_conv(x, 3, 3, 1, activation=None, name='conv17')
+            x = gen_conv(x, 1, 3, 1, activation=None, name='conv17')
             x = tf.nn.tanh(x)
             x_stage1 = x
 
             # stage2, paste result as input
-            x = x*mask + xin[:, :, :, 0:3]*(1.-mask)
-            x.set_shape(xin[:, :, :, 0:3].get_shape().as_list())
+            x = x*mask + xin*(1.-mask)
+            x.set_shape(xin.get_shape().as_list())
             # conv branch
             # xnow = tf.concat([x, ones_x, ones_x*mask], axis=3)
             xnow = x
@@ -104,7 +104,7 @@ class InpaintCAModel(Model):
             x = gen_conv(x, 2*cnum, 3, 1, name='allconv14')
             x = gen_deconv(x, cnum, name='allconv15_upsample')
             x = gen_conv(x, cnum//2, 3, 1, name='allconv16')
-            x = gen_conv(x, 3, 3, 1, activation=None, name='allconv17')
+            x = gen_conv(x, 1, 3, 1, activation=None, name='allconv17')
             x = tf.nn.tanh(x)
             x_stage2 = x
         return x_stage1, x_stage2, offset_flow
@@ -129,25 +129,25 @@ class InpaintCAModel(Model):
             return d
 
     def build_graph_with_losses(
-            self, FLAGS, batch_data, training=True, summary=False,
+            self, FLAGS, batch_data, mask, training=True, summary=False,
             reuse=False):
         if FLAGS.guided:
             batch_data, edge = batch_data
             edge = edge[:, :, :, 0:1] / 255.
             edge = tf.cast(edge > FLAGS.edge_threshold, tf.float32)
         batch_pos = batch_data / 127.5 - 1.
+        mask /= 255 #(batch_size, 256, 256, 1)
         # generate mask, 1 represents masked point
-        bbox = random_bbox(FLAGS)
-        regular_mask = bbox2mask(FLAGS, bbox, name='mask_c')
-        irregular_mask = brush_stroke_mask(FLAGS, name='mask_c')
-        mask = tf.cast(
-            tf.logical_or(
-                tf.cast(irregular_mask, tf.bool),
-                tf.cast(regular_mask, tf.bool),
-            ),
-            tf.float32
-        )
-
+#         bbox = random_bbox(FLAGS)
+#         regular_mask = bbox2mask(FLAGS, bbox, name='mask_c')
+#         irregular_mask = brush_stroke_mask(FLAGS, name='mask_c')
+#         mask = tf.cast(
+#             tf.logical_or(
+#                 tf.cast(irregular_mask, tf.bool),
+#                 tf.cast(regular_mask, tf.bool),
+#             ),
+#             tf.float32
+#         )
         batch_incomplete = batch_pos*(1.-mask)
         if FLAGS.guided:
             edge = edge * mask
@@ -184,7 +184,7 @@ class InpaintCAModel(Model):
         # gan
         batch_pos_neg = tf.concat([batch_pos, batch_complete], axis=0)
         if FLAGS.gan_with_mask:
-            batch_pos_neg = tf.concat([batch_pos_neg, tf.tile(mask, [FLAGS.batch_size*2, 1, 1, 1])], axis=3)
+            batch_pos_neg = tf.concat([batch_pos_neg, tf.tile(mask, [2, 1, 1, 1])], axis=3)
         if FLAGS.guided:
             # conditional GANs
             batch_pos_neg = tf.concat([batch_pos_neg, tf.tile(edge, [2, 1, 1, 1])], axis=3)
