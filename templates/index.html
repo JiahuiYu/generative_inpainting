@@ -1,0 +1,166 @@
+<HTML>
+    <head>
+    </head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+        <script src="../static/canvas.js"></script>
+        
+        <style>
+            #loader {
+                z-index: 1;
+                width: 40px;
+                height: 40px;
+                /* margin: 30px 0px 0px 50px; */
+                border-top:20px;
+                border: 6px solid #f3f3f3;
+                border-radius: 50%;
+                border-top: 6px solid #3498db;
+                vertical-align:middle;
+                -webkit-animation: spin 3s linear infinite;
+                animation: spin 2s linear infinite;
+                }
+
+            @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+            }
+
+            @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+            }
+        </style>
+
+        <!-- Project Title! -->
+        <title>Inpainting</title>    
+    </head>
+    <body>
+        <div class = "container">
+            <div class="jumbotron mt-3">
+                 <!-- Proejct Title -->
+                <h1>Inpainting</h1>
+                <!-- Github link and Ainize link -->
+                <A>GitHub Repo: </A> <A href="https://github.com/woomurf/generative_inpainting"> https://github.com/woomurf/generative_inpainting </A>
+                <br>
+                <A>Open API : </A> <A href=""> on Ainize </A>
+
+                <hr class="solid">
+                <!-- If your project have a input files -->
+                <h2>Let's inpainting </h2>
+                <div id="model" style="margin-top: 10px;">
+                    <p><b>Select Model</b></p>
+                    <input type="radio" name="models" value="places2" id="places2" checked="checked" style="margin-right: 5px;">
+                    <label>Places2</label> 
+                    <input type="radio" name="models" value="celeba" id="celeba" style="margin-right: 5px; margin-left: 5px;">
+                    <label>Celeba</label>
+                </div>
+                <br>
+                <div id = 'inputImage'>
+                    <label for="label1">Image : </label>
+                    <input type = 'file' id = 'image' style="margin-right: 10px; margin-bottom: 10px;"><br>
+                    <label for="label2">Mask: </label>
+                    <input type = 'file' id = 'mask' style="margin-right: 10px; margin-bottom: 10px;">
+                    <button id = "run" type='submit' class="btn btn-primary btn-lg" style="margin-left: auto;"> RUN </button>
+                    <div id = "loader" style="display: none;"></div>
+                </div>
+                
+                <!-- Result Box -->
+                <div id ='resultBox' style="margin-left: auto; margin-right: auto;">
+                    <p id='statusBox'></p>
+                    <canvas id="canvas"></canvas>
+                    <img id='resultImage' src="" alt="" width="400px">
+                </div>
+
+                <!-- onclick function if you want you can delete this -->
+                <script>
+                    document.getElementById("run").onclick = () => {
+
+                        waiting();
+
+                        var status = document.getElementById("statusBox");
+                        var result = document.getElementById("resultImage");
+
+                        var image = document.getElementById("image").files[0];
+                        var mask = document.getElementById("mask").files[0];
+
+                        var model = $("input:radio[name='models']:checked").val();
+
+                        if (image == null || mask == null){
+                            return null;
+                        }
+                        
+                        var formData = new FormData();
+                        formData.append("image", image);
+                        formData.append("mask", mask);
+                        formData.append("model", model);
+
+                        fetch(
+                            "/inpainting",
+                            {
+                                method: "POST",
+                                body: formData
+                            }
+                        )
+                        .then(response => {
+                            if (response.status == 200){
+                                return response
+                            }
+                            else{
+                                response.json().then(error=>{
+                                    status.innerHTML = error['error'];
+                                })
+                                stopWaiting();
+
+                                throw Error("error");
+                            }
+                        })
+                        .then(response => response.blob())
+                        .then(blob => URL.createObjectURL(blob))
+                        .then(ImageURL => {
+                            result.src = ImageURL;
+                            status.innerHTML = "DONE!";
+                            stopWaiting();
+                        })
+                        .catch(e => {
+                            console.log(e);
+                        })
+
+                        
+                    }
+
+                    document.getElementById("image").onchange = (event) => {
+                        drawing();
+                    }
+
+                    function waiting(){
+                        var spining = document.getElementById("loader");
+                        spining.style.display = 'inline-block';
+                        var runButton = document.getElementById("run");
+                        runButton.disabled = "disabled";
+                        var errorbox = document.getElementById("statusBox");
+                        errorbox.innerHTML = "";
+                    }
+
+                    function stopWaiting(){
+                        var spining = document.getElementById("loader");
+                        spining.style.display = "none";
+                        var runButton = document.getElementById("run");
+                        runButton.disabled = false;
+                    }
+
+                </script>
+            </div>
+        </div>
+    </body>
+</HTML>
+
