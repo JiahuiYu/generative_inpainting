@@ -12,4 +12,4 @@ COPY . .
 
 ENV CUDA_VISIBLE_DEVICES "0"
 
-CMD ["bash"]
+CMD ["python", "server.py"]
