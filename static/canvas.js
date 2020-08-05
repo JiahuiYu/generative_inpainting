@@ -21,6 +21,12 @@ function drawing(img){
 
     ctx.strokeStyle = "white";
     ctx.lineWidth = 20;
+    
+    var pointerSize = document.getElementById("pointerSize");
+    pointerSize.value = 20;
+
+    points = [];
+    pointList = [];
 
     canvas.addEventListener("mousedown", listener);
     canvas.addEventListener("mouseup",listener);
@@ -32,10 +38,6 @@ function drawing(img){
 
 function setLineWidthSize(size) {
     ctx.lineWidth = size;
-    console.log(ctx.lineWidth);
-    console.log(size);
-    
-    
 }
 
 function clear() {
@@ -192,6 +194,4 @@ function hideCanvas() {
     undo.style.display = 'none';   
     var pointerSize = document.getElementById("pointerSize");
     pointerSize.style.display = 'none';
-
-     
 }
