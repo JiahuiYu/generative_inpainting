@@ -27,9 +27,7 @@ function drawing(img){
     canvas.addEventListener("mousemove", listener);
     canvas.addEventListener("mouseup", listener);
 
-    img.style.display = "none";
-    console.log("drawing");
-    
+    img.style.display = "none";    
 }
 
 function setLineWidthSize(size) {

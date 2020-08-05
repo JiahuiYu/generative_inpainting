@@ -147,25 +147,29 @@
                     }
 
                     document.getElementById("image").onchange = (event) => {
+                        var running = document.getElementById("run");
+                        var result = document.getElementById("resultImage");
+                        var prevoew = document.getElementById("preview");
+                        if (running.disabled == true ){
+                            return null;
+                        }
+
+                        result.style.display = "none";
+                        preview.style.display = "none";
+
                         var hiddenImg = document.getElementById('hiddenImage');
+
+                        if(hiddenImg.style.display == "none"){
+                            hiddenImg.style.display = "block";
+                        }
                         
                         hiddenImg.src = URL.createObjectURL(event.target.files[0]);
                         hiddenImg.onload = function() {
                             URL.revokeObjectURL(hiddenImg.src) // free memory
-                            console.log(hiddenImage.style.display);
-                            
-                            if (hiddenImg.style.display == "block"){
                                 drawing(hiddenImg);
                                 showCanvas();
-                            }
-                        }
-
-                        // 1. 이미지를 올리고, hiddenImage는 none, canvas는 block, preview는 none, resultImage는 none. 
-                        // 2. RUN을 눌러놨을 때, hiddenImage는 none, canvas는 none, preview block, resultImage는 none. 
-                        // 3. 결과를 받았을 때, hiddenImage는 none, canvas는 none, preview는 block, resultImage는 block.
-                        
+                        }   
                     }
-
                     function waiting(){
                         var spining = document.getElementById("loader");
                         spining.style.display = 'inline-block';
