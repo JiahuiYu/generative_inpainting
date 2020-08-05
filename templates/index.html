@@ -13,7 +13,7 @@
         <!-- JQuery -->
         <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
-        <script src="../static/canvas.js"></script>
+        <script src="{{url_for('static', filename = 'canvas.js')}}"></script>
         
         <style>
             #loader {
@@ -80,7 +80,7 @@
                     <canvas id="canvas" width="500" height="auto" style="display:none"></canvas>
                     <input type="number" id="pointerSize" value="20" min="0" style="display: none;" onchange="changeSize(this)" placeholder="minimum is 1">
                     <button id="undo" onclick= "undo()" style="display: none;">Undo</button>
-                    <img id='resultImage' src="" alt="" width="400px" style="display: none;">
+                    <img id='resultImage' src="" alt="" width="500" style="display: none;">
                 </div>
 
                 <!-- onclick function if you want you can delete this -->
@@ -150,6 +150,8 @@
                         var running = document.getElementById("run");
                         var result = document.getElementById("resultImage");
                         var prevoew = document.getElementById("preview");
+                        var status = document.getElementById("statusBox");
+                        status.innerHTML = "";
                         if (running.disabled == true ){
                             return null;
                         }
