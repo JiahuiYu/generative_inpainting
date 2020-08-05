@@ -68,8 +68,6 @@
                 <div id = 'inputImage'>
                     <label for="label1">Image : </label>
                     <input type = 'file' id = 'image' style="margin-right: 10px; margin-bottom: 10px;"><br>
-                    <label for="label2">Mask: </label>
-                    <input type = 'file' id = 'mask' style="margin-right: 10px; margin-bottom: 10px;">
                     <button id = "run" type='submit' class="btn btn-primary btn-lg" style="margin-left: auto;"> RUN </button>
                     <div id = "loader" style="display: none;"></div>
                 </div>
@@ -77,8 +75,12 @@
                 <!-- Result Box -->
                 <div id ='resultBox' style="margin-left: auto; margin-right: auto;">
                     <p id='statusBox'></p>
-                    <canvas id="canvas"></canvas>
-                    <img id='resultImage' src="" alt="" width="400px">
+                    <img id="hiddenImage" width="500" height="auto" style="display:block">
+                    <img id="preview" width="500" height="auto" style="display: none;">
+                    <canvas id="canvas" width="500" height="auto" style="display:none"></canvas>
+                    <input type="number" id="pointerSize" value="20" min="0" style="display: none;" onchange="changeSize(this)" placeholder="minimum is 1">
+                    <button id="undo" onclick= "undo()" style="display: none;">Undo</button>
+                    <img id='resultImage' src="" alt="" width="400px" style="display: none;">
                 </div>
 
                 <!-- onclick function if you want you can delete this -->
@@ -90,9 +92,13 @@
                         var status = document.getElementById("statusBox");
                         var result = document.getElementById("resultImage");
 
-                        var image = document.getElementById("image").files[0];
-                        var mask = document.getElementById("mask").files[0];
-
+                        var image = saveCanvas();
+                        changeCanvasToImage(image);
+                        var mask = createMask();
+                    
+                        image = dataURLtoFile(image);
+                        mask = dataURLtoFile(mask);
+                        
                         var model = $("input:radio[name='models']:checked").val();
 
                         if (image == null || mask == null){
@@ -103,6 +109,9 @@
                         formData.append("image", image);
                         formData.append("mask", mask);
                         formData.append("model", model);
+
+                        hideCanvas();
+                        document.getElementById("preview").style.display = 'block';
 
                         fetch(
                             "/inpainting",
@@ -128,18 +137,33 @@
                         .then(blob => URL.createObjectURL(blob))
                         .then(ImageURL => {
                             result.src = ImageURL;
+                            result.style.display = 'block';
                             status.innerHTML = "DONE!";
                             stopWaiting();
                         })
                         .catch(e => {
                             console.log(e);
                         })
-
-                        
                     }
 
                     document.getElementById("image").onchange = (event) => {
-                        drawing();
+                        var hiddenImg = document.getElementById('hiddenImage');
+                        
+                        hiddenImg.src = URL.createObjectURL(event.target.files[0]);
+                        hiddenImg.onload = function() {
+                            URL.revokeObjectURL(hiddenImg.src) // free memory
+                            console.log(hiddenImage.style.display);
+                            
+                            if (hiddenImg.style.display == "block"){
+                                drawing(hiddenImg);
+                                showCanvas();
+                            }
+                        }
+
+                        // 1. 이미지를 올리고, hiddenImage는 none, canvas는 block, preview는 none, resultImage는 none. 
+                        // 2. RUN을 눌러놨을 때, hiddenImage는 none, canvas는 none, preview block, resultImage는 none. 
+                        // 3. 결과를 받았을 때, hiddenImage는 none, canvas는 none, preview는 block, resultImage는 block.
+                        
                     }
 
                     function waiting(){
@@ -158,6 +182,29 @@
                         runButton.disabled = false;
                     }
 
+                    function changeCanvasToImage(image) {
+                        var img = document.getElementById("preview");
+                        img.src = image;
+                    }
+
+                    function dataURLtoFile(dataurl, filename) {
+                        
+                        var arr = dataurl.split(','),
+                            mime = arr[0].match(/:(.*?);/)[1],
+                            bstr = atob(arr[1]), 
+                            n = bstr.length, 
+                            u8arr = new Uint8Array(n);
+                            
+                        while(n--){
+                            u8arr[n] = bstr.charCodeAt(n);
+                        }
+                        
+                        return new File([u8arr], filename, {type:mime});
+                    }
+
+                    function changeSize(pointerSize){
+                        setLineWidthSize(pointerSize.value);
+                    }
                 </script>
             </div>
         </div>
