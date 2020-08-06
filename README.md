@@ -1,6 +1,6 @@
 [![Run on Ainize](https://ainize.ai/static/images/run_on_ainize_button.svg)](https://ainize.web.app/redirect?git_repo=github.com/woomurf/generative_inpainting)
 
-You can test this project on [Web Server](https://generative-inpainting-woomurf.endpoint.ainize.ai/). 
+You can test this project using your image in [Web Server](https://generative-inpainting-woomurf.endpoint.ainize.ai/). 
 
 ---
 
