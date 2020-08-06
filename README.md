@@ -1,3 +1,9 @@
+[![Run on Ainize](https://ainize.ai/static/images/run_on_ainize_button.svg)](https://ainize.web.app/redirect?git_repo=github.com/woomurf/generative_inpainting)
+
+You can test this project on [Web Server](https://generative-inpainting-woomurf.endpoint.ainize.ai/). 
+
+---
+
 # Generative Image Inpainting
 
 ![version](https://img.shields.io/badge/version-v2.0.0-green.svg?style=plastic)
