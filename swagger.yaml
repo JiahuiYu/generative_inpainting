@@ -1,0 +1,79 @@
+openapi: 3.0.0
+
+info:
+  title: Generative Inpainting
+  description: | 
+    This API is about Genarative Inpainting opensource project.
+    
+    You can erase something from an image and fill it with the surrounding.
+
+    You can test Generative Inpainting in API or **[Web Server](https://generative-inpainting-woomurf.endpoint.ainize.ai/)**.
+    
+    Original Repo of project : [https://github.com/JiahuiYu/generative_inpainting](https://github.com/JiahuiYu/generative_inpainting)
+    
+    ---
+    
+      How to use:
+      * Prepare image which marked to erase points in image with white. -> image
+      * Prepare image which have only white points to erase with alpha channel (PNG) -> mask
+      * Enter image and mask.
+      * Enter model name (places2 or celeba).
+      * Execute and wait some time.
+      * If you use web server above, you can use this api more easier.
+
+  version: "0.1"
+  license: 
+    name: "Attribution-NonCommercial 4.0 International"
+
+servers:
+  - url: https://generative-inpainting-woomurf.endpoint.ainize.ai/
+  
+paths:
+  /inpainting:
+    post:
+      requestBody:
+        required: true
+        description: | 
+            Enter image and mask. 
+            
+            Enter model name (places2 or celeba).
+            
+            [sample image](https://raw.githubusercontent.com/woomurf/generative_inpainting/master/examples/places2/case1_input.png)
+            
+            [sample mask](https://raw.githubusercontent.com/woomurf/generative_inpainting/master/examples/places2/case1_mask.png)
+            
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+                mask:
+                  type: string
+                  format: binary
+                model:
+                  type: string
+                  default: places2
+              required:
+                - image
+                - mask
+      
+      responses:
+        '200':
+          description: success
+          content:
+            images/*:
+              schema:
+                type: string
+                format: binary
+                
+        '400':
+          description: Bad Request
+          
+        '429':
+          description: Too Many Requests
+        
+        '500':
+          description: Server side error
