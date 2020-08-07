@@ -10,6 +10,4 @@ RUN pip install Flask
 
 COPY . . 
 
-ENV CUDA_VISIBLE_DEVICES "0"
-
 CMD ["python", "server.py"]
