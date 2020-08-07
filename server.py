@@ -12,8 +12,6 @@ from queue import Queue, Empty
 from inpaint_model import InpaintCAModel
 from flask import Flask, request, render_template, send_file, jsonify
 
-os.environ["CUDA_VISIBLE_DEVICES"]="0"
-
 
 app = Flask(__name__, template_folder='./templates/')
 
@@ -77,7 +75,8 @@ def inpainting():
     return send_file(io, mimetype="image/png")
 
 def run(image, mask, checkpoint):
-    output = inpaint(image, mask, model, sess, g, checkpoint)
+
+    output = inpaint(image, mask, model, checkpoint)
     img = cv2.cvtColor(output, cv2.COLOR_BGR2RGB)
     
     collections = g.get_all_collection_keys()
@@ -97,4 +96,4 @@ def checkHealth():
     return "ok", 200
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80 )
+    app.run(host='0.0.0.0', port=80, threaded=True)
