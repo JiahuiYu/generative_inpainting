@@ -273,7 +273,7 @@ class InpaintCAModel(Model):
         """
         """
         # generate mask, 1 represents masked point
-        if FLAGS.guided:
+        if FLAGS:
             batch_raw, edge, masks_raw = tf.split(batch_data, 3, axis=2)
             edge = edge[:, :, :, 0:1] / 255.
             edge = tf.cast(edge > FLAGS.edge_threshold, tf.float32)
@@ -283,7 +283,7 @@ class InpaintCAModel(Model):
 
         batch_pos = batch_raw / 127.5 - 1.
         batch_incomplete = batch_pos * (1. - masks)
-        if FLAGS.guided:
+        if FLAGS:
             edge = edge * masks[:, :, :, 0:1]
             xin = tf.concat([batch_incomplete, edge], axis=3)
         else:
