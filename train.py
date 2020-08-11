@@ -78,7 +78,7 @@ if __name__ == "__main__":
     # train generator with primary trainer
     # trainer = ng.train.Trainer(
     trainer = ng.train.MultiGPUTrainer(
-        num_gpus=FLAGS.num_gpus_per_job,
+        num_gpus=FLAGS.NUM_GPUS,
         optimizer=g_optimizer,
         var_list=g_vars,
         max_iters=FLAGS.max_iters,

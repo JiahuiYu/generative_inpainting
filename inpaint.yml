@@ -4,15 +4,15 @@ num_gpus_per_job: 1  # number of gpus each job need
 num_cpus_per_job: 4  # number of gpus each job need
 num_hosts_per_job: 1
 memory_per_job: 32  # number of gpus each job need
-gpu_type: 'nvidia-tesla-p100'
+gpu_type: 'nvidia-tesla-v100'
 
 # parameters
-name: places2_gated_conv_v100  # any name
+name: esc50_gated_conv_v100  # any name
 model_restore: ''  # logs/places2_gated_conv
-dataset: 'celebahq'  # 'tmnist', 'dtd', 'places2', 'celeba', 'imagenet', 'cityscapes'
+dataset: 'esc50'  # 'tmnist', 'dtd', 'places2', 'celeba', 'imagenet', 'cityscapes'
 random_crop: False  # Set to false when dataset is 'celebahq', meaning only resize the images to img_shapes, instead of crop img_shapes from a larger raw image. This is useful when you train on images with different resolutions like places2. In these cases, please set random_crop to true.
-val: False  # true if you want to view validation results in tensorboard
-log_dir: logs/full_model_celeba_hq_256
+val: True  # true if you want to view validation results in tensorboard
+log_dir: logs/full_model_esc50_origin
 
 gan: 'sngan'
 gan_loss_alpha: 1
@@ -26,6 +26,9 @@ train_spe: 4000
 max_iters: 100000000
 viz_max_out: 10
 val_psteps: 2000
+NUM_GPUS: 2
+GPU_ID: [0, 1]
+log_progress: True
 
 # data
 data_flist:
@@ -47,11 +50,17 @@ data_flist:
   # http://www.image-net.org/, please use random_crop: True
   imagenet: [
     'data/imagenet/train_shuffled.flist',
-    'data/imagenet/validation_static_view.flist',
+    'data/imagenet/validation_static_view.flist'
+  ]
+  # audio to spectrogram https://github.com/karolpiczak/ESC-50
+  esc50: [
+    'data/esc50/origin/train_shuffled.flist',
+    'data/esc50/origin/validation_static_view.flist'                 
   ]
 
+
 static_view_size: 30
-img_shapes: [256, 256, 3]
+img_shapes: [1025, 401, 3]
 height: 128
 width: 128
 max_delta_height: 32
