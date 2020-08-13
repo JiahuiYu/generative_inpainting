@@ -185,6 +185,8 @@ function showCanvas() {
 
     var pointerSize = document.getElementById("pointerSize");
     pointerSize.style.display = 'inline-block';
+    var brushWidth = document.getElementById("Brushwidth");
+    brushWidth.style.display = 'inline-block';
 }
 
 function hideCanvas() {
@@ -194,4 +196,6 @@ function hideCanvas() {
     undo.style.display = 'none';   
     var pointerSize = document.getElementById("pointerSize");
     pointerSize.style.display = 'none';
+    var brushWidth = document.getElementById("Brushwidth");
+    brushWidth.style.display = 'none';
 }

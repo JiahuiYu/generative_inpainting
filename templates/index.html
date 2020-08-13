@@ -39,6 +39,11 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
             }
+
+            figure{
+                display: inline-block;
+                text-align: center;
+            }
         </style>
 
         <!-- Project Title! -->
@@ -48,27 +53,47 @@
         <div class = "container">
             <div class="jumbotron mt-3">
                  <!-- Proejct Title -->
-                <h1>Inpainting</h1>
-                <!-- Github link and Ainize link -->
-                <A>GitHub Repo: </A> <A href="https://github.com/woomurf/generative_inpainting"> https://github.com/woomurf/generative_inpainting </A>
+                <div id="title_description">
+                    
+                    <h1>Image Inpainting</h1>
+                    <p><b>: No worries! AI can remove unwanted objects from your photo.<br>
+                        With this AI open-source project, you can remove unwanted object of photo, 
+                        you can eraser person, era
+                    </b></p>
+
+                    <A href="https://github.com/woomurf/generative_inpainting">GitHub Repo </A>
+                    &nbsp;&nbsp;
+                    <A href="https://ainize.ai/project/woomurf/generative-inpainting">Open API on Ainize </A>
+                </div>
                 <br>
-                <A>Open API : </A> <A href="https://ainize.ai/project/woomurf/generative-inpainting"> on Ainize </A>
-                <p style="font-size: 30;">Erase things which you want  in image! </p>
+                <h4>Note</h4>
+                <ul>
+                    <li>Results are direct outputs from trained generative neural networks. No post-processing steps are applied.</li>
+                    <li>Model is trained on CelebA-HQ and Places2.</li>
+                </ul>
                 <hr class="solid">
                 <!-- If your project have a input files -->
                 <div style="margin-bottom: 10px;">
-                    <h2>Example</h2>
-                    <img id="sample1" style="display: inline-block;" width="300" src="https://raw.githubusercontent.com/woomurf/generative_inpainting/master/examples/places2/case1_raw.png">
-                    <img id="sample2" style="display: inline-block;" width="300" src="https://raw.githubusercontent.com/woomurf/generative_inpainting/master/examples/places2/case1_input.png">
-                    <img id="sample3" style="display: inline-block;" width="300" src="https://raw.githubusercontent.com/woomurf/generative_inpainting/master/examples/places2/case1_output.png">
+                    <figure>
+                        <img id="sample1" style="display: inline-block;" width="300" src="https://raw.githubusercontent.com/woomurf/generative_inpainting/master/examples/places2/case1_raw.png">
+                        <figcaption>Original Image</figcaption>
+                    </figure>
+                    <figure>
+                        <img id="sample2" style="display: inline-block;" width="300" src="https://raw.githubusercontent.com/woomurf/generative_inpainting/master/examples/places2/case1_input.png">
+                        <figcaption>Mask Image</figcaption>
+                    </figure>
+                    <figure>
+                        <img id="sample3" style="display: inline-block;" width="300" src="https://raw.githubusercontent.com/woomurf/generative_inpainting/master/examples/places2/case1_output.png">
+                        <figcaption>Inpainted Image</figcaption>
+                    </figure>
                 </div>
                 <div id="explain">
-                    <h2>How to use?</h2>
+                    <h2>How to use</h2>
                     <ol>
-                        <li>Select model you want.</li>
-                        <li>Enter the image you want.</li>
-                        <li>Paint the part you want to erase white.</li>
-                        <li>Click run and wait some time (10s ~ 30s).</li>
+                        <li>Select a model between Places2 and Celeba.</li>
+                        <li>Insert an image.</li>
+                        <li>Mask the part you want to erase white.</li>
+                        <li>Click run button and get the result.</li>
                     </ol>
                 </div>
                 <h2>Let's inpainting </h2>
@@ -91,9 +116,9 @@
                 <div id ='resultBox' style="margin-left: auto; margin-right: auto;">
                     <p id='statusBox'></p>
                     <img id="hiddenImage" width="500" height="auto" style="display:block">
-                    <img id="preview" width="500" height="auto" style="display: none;">
+                    <img id="preview" width="500" height="auto" style="display: none; margin-right: 10px;">
                     <canvas id="canvas" width="500" height="auto" style="display:none"></canvas>
-                    <input type="number" id="pointerSize" value="20" min="0" style="display: none;" onchange="changeSize(this)" placeholder="minimum is 1">
+                    <p id="Brushwidth" style="display: none;">Brush width :</p><input type="number" id="pointerSize" value="20" min="0" style="display: none;" onchange="changeSize(this)" placeholder="minimum is 1">
                     <button id="undo" onclick= "undo()" style="display: none;">Undo</button>
                     <img id='resultImage' src="" alt="" width="500" style="display: none;">
                 </div>
@@ -126,7 +151,7 @@
                         formData.append("model", model);
 
                         hideCanvas();
-                        document.getElementById("preview").style.display = 'block';
+                        document.getElementById("preview").style.display = 'inline-block';
 
                         fetch(
                             "/inpainting",
@@ -152,7 +177,7 @@
                         .then(blob => URL.createObjectURL(blob))
                         .then(ImageURL => {
                             result.src = ImageURL;
-                            result.style.display = 'block';
+                            result.style.display = 'inline-block';
                             status.innerHTML = "DONE!";
                             stopWaiting();
                         })
