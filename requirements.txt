@@ -1,0 +1,4 @@
+opencv-python==4.4.0.42
+pyyaml==5.3.1
+pillow==7.2.0
+git+https://github.com/JiahuiYu/neuralgym
