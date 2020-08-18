@@ -1,6 +1,6 @@
-[![Run on Ainize](https://ainize.ai/static/images/run_on_ainize_button.svg)](https://ainize.web.app/redirect?git_repo=github.com/woomurf/generative_inpainting)
+[![Run on Ainize](https://ainize.ai/static/images/run_on_ainize_button.svg)](https://ainize.web.app/redirect?git_repo=https://github.com/woomurf/generative_inpainting)
 
-You can test this project using your image in [Web Server](https://generative-inpainting-woomurf.endpoint.ainize.ai/). 
+You can test this project using your image in [Web Server](https://master-generative-inpainting-woomurf.endpoint.ainize.ai/). 
 
 ---
 
@@ -29,10 +29,10 @@ Free-form image inpainting results by our system built on gated convolution. Eac
     * Install tensorflow toolkit [neuralgym](https://github.com/JiahuiYu/neuralgym) (run `pip install git+https://github.com/JiahuiYu/neuralgym`).
 1. Training:
     * Prepare training images filelist and shuffle it ([example](https://github.com/JiahuiYu/generative_inpainting/issues/15)).
-    * Modify [inpaint.yml](/inpaint.yml) to set DATA_FLIST, LOG_DIR, IMG_SHAPES and other parameters.
+    * Modify [inpaint.yml](https://github.com/JiahuiYu/generative_inpainting/blob/master/inpaint.yml) to set DATA_FLIST, LOG_DIR, IMG_SHAPES and other parameters.
     * Run `python train.py`.
 2. Resume training:
-    * Modify MODEL_RESTORE flag in [inpaint.yml](/inpaint.yml). E.g., MODEL_RESTORE: 20180115220926508503_places2_model.
+    * Modify MODEL_RESTORE flag in [inpaint.yml](https://github.com/JiahuiYu/generative_inpainting/blob/master/inpaint.yml). E.g., MODEL_RESTORE: 20180115220926508503_places2_model.
     * Run `python train.py`.
 3. Testing:
     * Run `python test.py --image examples/input.png --mask examples/mask.png --output examples/output.png --checkpoint model_logs/your_model_dir`.
