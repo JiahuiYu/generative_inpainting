@@ -1,13 +1,15 @@
 FROM tensorflow/tensorflow:1.7.0-devel-gpu-py3
 
-RUN pip install git+https://github.com/JiahuiYu/neuralgym
 RUN apt-get update
-RUN apt-get install -y libsm6 libxext6 libxrender-dev
-RUN pip install opencv-python
-RUN pip install pillow 
-RUN pip install PyYAML 
-RUN pip install Flask
+RUN apt-get install -y libsm6 libxext6 libxrender-dev libgl1-mesa-dev
 
-COPY . . 
+RUN pip install --upgrade pip
+
+WORKDIR /app
+COPY requirements.txt /app
+
+RUN pip install -r /app/requirements.txt
+
+COPY . /app
 
 CMD ["python", "server.py"]
