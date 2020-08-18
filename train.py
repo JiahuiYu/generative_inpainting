@@ -35,7 +35,7 @@ if __name__ == "__main__":
         img_shapes = [img_shapes, img_shapes]
     data = ng.data.DataFromFNames(
         fnames, img_shapes, random_crop=FLAGS.random_crop,
-        nthreads=FLAGS.num_cpus_per_job)
+        nthreads=FLAGS.num_cpus_per_job, filetype=FLAGS.filetype)
     images = data.data_pipeline(FLAGS.batch_size)
     # main model
     model = InpaintCAModel()

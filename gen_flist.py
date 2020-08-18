@@ -5,14 +5,14 @@ import random
 import argparse
 
 # 划分验证集训练集
-_NUM_TEST = 2800
+_NUM_TEST = 200
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--folder_path', default='/work/r08922a13/Waveform-auto-encoder/datasets/ESC-50-master/spectrogram_cut256_aug', type=str,
+parser.add_argument('--folder_path', default='/work/r08922a13/Waveform-auto-encoder/datasets/ESC-50-master/spectrogram_npy', type=str,
                     help='The folder path')
-parser.add_argument('--train_filename', default='./data/esc50/cut256_aug/train_shuffled.flist', type=str,
+parser.add_argument('--train_filename', default='./data/esc50/origin_npy/train_shuffled.flist', type=str,
                     help='The train filename.')
-parser.add_argument('--validation_filename', default='./data/esc50/cut256_aug/validation_static_view.flist', type=str,
+parser.add_argument('--validation_filename', default='./data/esc50/origin_npy/validation_static_view.flist', type=str,
                     help='The validation filename.')
 
 

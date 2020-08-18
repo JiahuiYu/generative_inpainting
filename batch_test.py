@@ -41,9 +41,16 @@ if __name__ == "__main__":
     input_image_ph = tf.placeholder(
         tf.float32, shape=(1, args.image_height, args.image_width*2, 3))
     output = model.build_server_graph(FLAGS, input_image_ph)
-    output = (output + 1.) * 127.5
-    output = tf.reverse(output, [-1])
-    output = tf.saturate_cast(output, tf.uint8)
+    if FLAGS.filetype == 'image':
+        output = (output + 1.) * 127.5
+        output = tf.reverse(output, [-1])
+        output = tf.saturate_cast(output, tf.uint8)
+    elif FLAGS.filetype == 'npy':
+        output = (output + 1.) / 2.
+        output = tf.reverse(output, [-1])
+        output = tf.saturate_cast(output, tf.float32)
+    else:
+        raise ValueError('Type error for filetype.')
     vars_list = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES)
     assign_ops = []
     for var in vars_list:
@@ -63,7 +70,12 @@ if __name__ == "__main__":
         image, mask, out = line.split()
         base = os.path.basename(mask)
 
-        image = cv2.imread(image)
+        if FLAGS.filetype == 'image':
+            image = cv2.imread(image)
+        elif FLAGS.filetype == 'npy':
+            image = np.load(image)
+        else:
+            raise ValueError('Type error for filetype.')
         mask = cv2.imread(mask)
         image = cv2.resize(image, (args.image_width, args.image_height))
         mask = cv2.resize(mask, (args.image_width, args.image_height))
@@ -87,6 +99,11 @@ if __name__ == "__main__":
         # load pretrained model
         result = sess.run(output, feed_dict={input_image_ph: input_image})
         print('Processed: {}'.format(out))
-        cv2.imwrite(out, result[0][:, :, ::-1])
+        if FLAGS.filetype == 'image':
+            cv2.imwrite(out, result[0][:, :, ::-1])
+        elif FLAGS.filetype == 'npy':
+            np.save(out, result[0][:, :, ::-1])
+        else:
+            raise ValueError('Type error for filetype.')
 
     print('Time total: {}'.format(time.time() - t))

@@ -149,7 +149,12 @@ def bbox2mask(FLAGS, bbox, name='mask'):
             [bbox, height, width,
              FLAGS.max_delta_height, FLAGS.max_delta_width],
             tf.float32, stateful=False)
-        mask.set_shape([1] + [height, width] + [1])
+        if len(img_shape) == 3:
+            mask.set_shape([1] + [height, width] + [1])
+        elif len(img_shape) == 2:
+            mask.set_shape([1] + [height, width])
+        else:
+            raise ValueError('Unexpected shape of input image.')
     return mask
 
 
@@ -217,7 +222,12 @@ def brush_stroke_mask(FLAGS, name='mask'):
             generate_mask,
             [height, width],
             tf.float32, stateful=True)
-        mask.set_shape([1] + [height, width] + [1])
+        if len(img_shape) == 3:
+            mask.set_shape([1] + [height, width] + [1])
+        elif len(img_shape) == 2:
+            mask.set_shape([1] + [height, width])
+        else:
+            raise ValueError('Unexpected shape of image.')
     return mask
 
 
@@ -500,8 +510,9 @@ def flow_to_image_tf(flow, name='flow_to_image'):
     """
     with tf.variable_scope(name), tf.device('/cpu:0'):
         img = tf.py_func(flow_to_image, [flow], tf.float32, stateful=False)
-        img.set_shape(flow.get_shape().as_list()[0:-1]+[3])
-        img = img / 127.5 - 1.
+        img.set_shape(flow.get_shape().as_list()[0:-1]+[1])
+        # img = img / 127.5 - 1.
+        img = img * 2. - 1. # Edit for npy file instead of image.
         return img
 
 
@@ -511,7 +522,7 @@ def highlight_flow(flow):
     out = []
     s = flow.shape
     for i in range(flow.shape[0]):
-        img = np.ones((s[1], s[2], 3)) * 144.
+        img = np.ones((s[1], s[2], 1)) * 144.
         u = flow[i, :, :, 0]
         v = flow[i, :, :, 1]
         for h in range(s[1]):
@@ -528,8 +539,9 @@ def highlight_flow_tf(flow, name='flow_to_image'):
     """
     with tf.variable_scope(name), tf.device('/cpu:0'):
         img = tf.py_func(highlight_flow, [flow], tf.float32, stateful=False)
-        img.set_shape(flow.get_shape().as_list()[0:-1]+[3])
-        img = img / 127.5 - 1.
+        img.set_shape(flow.get_shape().as_list()[0:-1]+[1])
+        # img = img / 127.5 - 1.
+        img = img * 2. - 1. # Edit for npy file instead of image.
         return img
 
 

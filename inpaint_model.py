@@ -37,7 +37,12 @@ class InpaintCAModel(Model):
         """
         xin = x
         offset_flow = None
-        ones_x = tf.ones_like(x)[:, :, :, 0:1]
+        if len(x.shape) == 4:
+            ones_x = tf.ones_like(x)[:, :, :, 0:1]
+        elif len(x.shape) == 3:
+            ones_x = tf.ones_like(x)[:, :, :]
+        else:
+            raise ValueError('Unexpected shape of input x.')
         x = tf.concat([x, ones_x, ones_x*mask], axis=3)
 
         # two stage network
@@ -63,13 +68,13 @@ class InpaintCAModel(Model):
             x = gen_conv(x, 2*cnum, 3, 1, name='conv14')
             x = gen_deconv(x, cnum, name='conv15_upsample')
             x = gen_conv(x, cnum//2, 3, 1, name='conv16')
-            x = gen_conv(x, 3, 3, 1, activation=None, name='conv17')
+            x = gen_conv(x, 1, 3, 1, activation=None, name='conv17')
             x = tf.nn.tanh(x)
             x_stage1 = x
 
             # stage2, paste result as input
-            x = x*mask + xin[:, :, :, 0:3]*(1.-mask)
-            x.set_shape(xin[:, :, :, 0:3].get_shape().as_list())
+            x = x*mask + xin*(1.-mask)
+            x.set_shape(xin.get_shape().as_list())
             # conv branch
             # xnow = tf.concat([x, ones_x, ones_x*mask], axis=3)
             xnow = x
@@ -104,7 +109,7 @@ class InpaintCAModel(Model):
             x = gen_conv(x, 2*cnum, 3, 1, name='allconv14')
             x = gen_deconv(x, cnum, name='allconv15_upsample')
             x = gen_conv(x, cnum//2, 3, 1, name='allconv16')
-            x = gen_conv(x, 3, 3, 1, activation=None, name='allconv17')
+            x = gen_conv(x, 1, 3, 1, activation=None, name='allconv17')
             x = tf.nn.tanh(x)
             x_stage2 = x
         return x_stage1, x_stage2, offset_flow
@@ -135,7 +140,13 @@ class InpaintCAModel(Model):
             batch_data, edge = batch_data
             edge = edge[:, :, :, 0:1] / 255.
             edge = tf.cast(edge > FLAGS.edge_threshold, tf.float32)
-        batch_pos = batch_data / 127.5 - 1.
+        if FLAGS.filetype == 'image':
+            batch_pos = batch_data / 127.5 - 1.
+        elif FLAGS.filetype == 'npy':
+            # Makes 0~1 to -1~1
+            batch_pos = batch_data * 2. - 1.
+        else:
+            raise ValueError('Type error for filetype.')
         # generate mask, 1 represents masked point
         bbox = random_bbox(FLAGS)
         regular_mask = bbox2mask(FLAGS, bbox, name='mask_c')
@@ -228,8 +239,12 @@ class InpaintCAModel(Model):
             ),
             tf.float32
         )
-
-        batch_pos = batch_data / 127.5 - 1.
+        if FLAGS.filetype == 'image':
+            batch_pos = batch_data / 127.5 - 1.
+        elif FLAGS.filetype == 'npy':
+            batch_pos = batch_data * 2. - 1.
+        else:
+            raise ValueError('Type error for filetype.')
         batch_incomplete = batch_pos*(1.-mask)
         if FLAGS.guided:
             edge = edge * mask
@@ -268,7 +283,6 @@ class InpaintCAModel(Model):
                 tf.constant(FLAGS.height), tf.constant(FLAGS.width))
         return self.build_infer_graph(FLAGS, batch_data, bbox, name)
 
-
     def build_server_graph(self, FLAGS, batch_data, reuse=False, is_training=False):
         """
         """
@@ -279,9 +293,19 @@ class InpaintCAModel(Model):
             edge = tf.cast(edge > FLAGS.edge_threshold, tf.float32)
         else:
             batch_raw, masks_raw = tf.split(batch_data, 2, axis=2)
-        masks = tf.cast(masks_raw[0:1, :, :, 0:1] > 127.5, tf.float32)
+        if FLAGS.filetype == 'image':
+            masks = tf.cast(masks_raw[0:1, :, :, 0:1] > 127.5, tf.float32)
+        elif FLAGS.filetype == 'npy':
+            masks = tf.cast(masks_raw[0:1, :, :, 0:1] > 0.5, tf.float32)
+        else:
+            raise ValueError('Type error for filetype.')
 
-        batch_pos = batch_raw / 127.5 - 1.
+        if FLAGS.filetype == 'image':
+            batch_pos = batch_raw / 127.5 - 1.
+        elif FLAGS.filetype == 'npy':
+            batch_pos = batch_raw * 2. - 1.
+        else:
+            raise ValueError('Type error for filetype.')
         batch_incomplete = batch_pos * (1. - masks)
         if FLAGS.guided:
             edge = edge * masks[:, :, :, 0:1]

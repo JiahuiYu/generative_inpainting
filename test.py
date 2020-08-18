@@ -13,7 +13,7 @@ parser.add_argument('--image', default='', type=str,
                     help='The filename of image to be completed.')
 parser.add_argument('--mask', default='', type=str,
                     help='The filename of mask, value 255 indicates mask.')
-parser.add_argument('--output', default='output.png', type=str,
+parser.add_argument('--output', default='output.npy', type=str,
                     help='Where to write output.')
 parser.add_argument('--checkpoint_dir', default='', type=str,
                     help='The directory of tensorflow checkpoint.')
@@ -25,7 +25,12 @@ if __name__ == "__main__":
     args, unknown = parser.parse_known_args()
 
     model = InpaintCAModel()
-    image = cv2.imread(args.image)
+    if FLAGS.filetype == 'image':
+        image = cv2.imread(args.image)
+    elif FLAGS.filetype == 'npy':
+        image = np.load(args.image)
+    else:
+        raise ValueError('Type error for filetype.')
     mask = cv2.imread(args.mask)
     # mask = cv2.resize(mask, (0,0), fx=0.5, fy=0.5)
 
@@ -46,9 +51,16 @@ if __name__ == "__main__":
     with tf.Session(config=sess_config) as sess:
         input_image = tf.constant(input_image, dtype=tf.float32)
         output = model.build_server_graph(FLAGS, input_image)
-        output = (output + 1.) * 127.5
-        output = tf.reverse(output, [-1])
-        output = tf.saturate_cast(output, tf.uint8)
+        if FLAGS.filetype == 'image':
+            output = (output + 1.) * 127.5
+            output = tf.reverse(output, [-1])
+            output = tf.saturate_cast(output, tf.uint8)
+        elif FLAGS.filetype == 'npy':
+            output = (output + 1.) / 2.
+            output = tf.reverse(output, [-1])
+            output = tf.saturate_cast(output, tf.float32)
+        else:
+            raise ValueError('Type error for filetype.')
         # load pretrained model
         vars_list = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES)
         assign_ops = []
@@ -60,4 +72,9 @@ if __name__ == "__main__":
         sess.run(assign_ops)
         print('Model loaded.')
         result = sess.run(output)
-        cv2.imwrite(args.output, result[0][:, :, ::-1])
+        if FLAGS.filetype == 'image':
+            cv2.imwrite(args.output, result[0][:, :, ::-1])
+        elif FLAGS.filetype == 'npy':
+            np.save(args.output, result[0][:, :, ::-1])
+        else:
+            raise ValueError('Type error for filetype.')
