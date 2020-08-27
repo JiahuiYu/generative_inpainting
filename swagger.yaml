@@ -7,7 +7,7 @@ info:
     
     You can erase something from an image and fill it with the surrounding.
 
-    You can test Generative Inpainting in API or **[Web Server](https://generative-inpainting-woomurf.endpoint.ainize.ai/)**.
+    You can test Generative Inpainting in API or **[Web Server](https://master-generative-inpainting-woomurf.endpoint.ainize.ai/)**.
     
     Original Repo of project : [https://github.com/JiahuiYu/generative_inpainting](https://github.com/JiahuiYu/generative_inpainting)
     
@@ -26,7 +26,7 @@ info:
     name: "Attribution-NonCommercial 4.0 International"
 
 servers:
-  - url: https://generative-inpainting-woomurf.endpoint.ainize.ai/
+  - url: https://master-generative-inpainting-woomurf.endpoint.ainize.ai/
   
 paths:
   /inpainting:
