@@ -12,7 +12,7 @@ model_restore: ''  # logs/places2_gated_conv
 dataset: 'esc50'  # 'tmnist', 'dtd', 'places2', 'celeba', 'imagenet', 'cityscapes'
 random_crop: False  # Set to false when dataset is 'celebahq', meaning only resize the images to img_shapes, instead of crop img_shapes from a larger raw image. This is useful when you train on images with different resolutions like places2. In these cases, please set random_crop to true.
 val: True  # true if you want to view validation results in tensorboard
-log_dir: logs/full_model_esc50_origin_npy
+log_dir: logs/full_model_esc50_origin_npy_time_mask_training
 
 gan: 'sngan'
 gan_loss_alpha: 1
@@ -62,13 +62,13 @@ data_flist:
 filetype: 'npy'             # default: image, npy
 static_view_size: 30
 img_shapes: [1024, 400, 1]
-height: 128
-width: 128
-max_delta_height: 32
-max_delta_width: 32
+height: 1023
+width: 100
+max_delta_height: 100
+max_delta_width: 10
 batch_size: 4
 vertical_margin: 0
-horizontal_margin: 0
+horizontal_margin: 50
 
 # loss
 ae_loss: True

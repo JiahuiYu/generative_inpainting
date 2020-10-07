@@ -2,7 +2,7 @@ import os
 import glob
 
 import tensorflow as tf
-import neuralgym as ng
+from libs.neuralgym import neuralgym as ng
 
 from inpaint_model import InpaintCAModel
 
@@ -33,6 +33,7 @@ if __name__ == "__main__":
     if FLAGS.guided:
         fnames = [(fname, fname[:-4] + '_edge.jpg') for fname in fnames]
         img_shapes = [img_shapes, img_shapes]
+    print(FLAGS.filetype)
     data = ng.data.DataFromFNames(
         fnames, img_shapes, random_crop=FLAGS.random_crop,
         nthreads=FLAGS.num_cpus_per_job, filetype=FLAGS.filetype)

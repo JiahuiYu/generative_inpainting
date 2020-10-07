@@ -7,11 +7,11 @@ import tensorflow as tf
 from tensorflow.contrib.framework.python.ops import add_arg_scope
 from PIL import Image, ImageDraw
 
-from neuralgym.ops.layers import resize
-from neuralgym.ops.layers import *
-from neuralgym.ops.loss_ops import *
-from neuralgym.ops.gan_ops import *
-from neuralgym.ops.summary_ops import *
+from libs.neuralgym.neuralgym.ops.layers import resize
+from libs.neuralgym.neuralgym.ops.layers import *
+from libs.neuralgym.neuralgym.ops.loss_ops import *
+from libs.neuralgym.neuralgym.ops.gan_ops import *
+from libs.neuralgym.neuralgym.ops.summary_ops import *
 
 
 logger = logging.getLogger()
@@ -149,12 +149,7 @@ def bbox2mask(FLAGS, bbox, name='mask'):
             [bbox, height, width,
              FLAGS.max_delta_height, FLAGS.max_delta_width],
             tf.float32, stateful=False)
-        if len(img_shape) == 3:
-            mask.set_shape([1] + [height, width] + [1])
-        elif len(img_shape) == 2:
-            mask.set_shape([1] + [height, width])
-        else:
-            raise ValueError('Unexpected shape of input image.')
+        mask.set_shape([1] + [height, width] + [1])
     return mask
 
 
@@ -222,12 +217,7 @@ def brush_stroke_mask(FLAGS, name='mask'):
             generate_mask,
             [height, width],
             tf.float32, stateful=True)
-        if len(img_shape) == 3:
-            mask.set_shape([1] + [height, width] + [1])
-        elif len(img_shape) == 2:
-            mask.set_shape([1] + [height, width])
-        else:
-            raise ValueError('Unexpected shape of image.')
+        mask.set_shape([1] + [height, width] + [1])
     return mask
 
 
@@ -511,8 +501,8 @@ def flow_to_image_tf(flow, name='flow_to_image'):
     with tf.variable_scope(name), tf.device('/cpu:0'):
         img = tf.py_func(flow_to_image, [flow], tf.float32, stateful=False)
         img.set_shape(flow.get_shape().as_list()[0:-1]+[1])
-        # img = img / 127.5 - 1.
-        img = img * 2. - 1. # Edit for npy file instead of image.
+        img = img / 127.5 - 1. # Here is the compute for the flow color
+        #img = img * 2. - 1. # Edit for npy file instead of image. (error)
         return img
 
 
@@ -522,7 +512,7 @@ def highlight_flow(flow):
     out = []
     s = flow.shape
     for i in range(flow.shape[0]):
-        img = np.ones((s[1], s[2], 1)) * 144.
+        img = np.ones((s[1], s[2], 3)) * 144.
         u = flow[i, :, :, 0]
         v = flow[i, :, :, 1]
         for h in range(s[1]):
@@ -540,8 +530,8 @@ def highlight_flow_tf(flow, name='flow_to_image'):
     with tf.variable_scope(name), tf.device('/cpu:0'):
         img = tf.py_func(highlight_flow, [flow], tf.float32, stateful=False)
         img.set_shape(flow.get_shape().as_list()[0:-1]+[1])
-        # img = img / 127.5 - 1.
-        img = img * 2. - 1. # Edit for npy file instead of image.
+        img = img / 127.5 - 1. # Normalize flow color
+        # img = img * 2. - 1. # Edit for npy file instead of image. (error)
         return img
 
 

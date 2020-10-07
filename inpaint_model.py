@@ -2,16 +2,16 @@
 import logging
 
 import cv2
-import neuralgym as ng
+from libs.neuralgym import neuralgym as ng
 import tensorflow as tf
 from tensorflow.contrib.framework.python.ops import arg_scope
 
-from neuralgym.models import Model
-from neuralgym.ops.summary_ops import scalar_summary, images_summary
-from neuralgym.ops.summary_ops import gradients_summary
-from neuralgym.ops.layers import flatten, resize
-from neuralgym.ops.gan_ops import gan_hinge_loss
-from neuralgym.ops.gan_ops import random_interpolates
+from libs.neuralgym.neuralgym.models import Model
+from libs.neuralgym.neuralgym.ops.summary_ops import scalar_summary, images_summary
+from libs.neuralgym.neuralgym.ops.summary_ops import gradients_summary
+from libs.neuralgym.neuralgym.ops.layers import flatten, resize
+from libs.neuralgym.neuralgym.ops.gan_ops import gan_hinge_loss
+from libs.neuralgym.neuralgym.ops.gan_ops import random_interpolates
 
 from inpaint_ops import gen_conv, gen_deconv, dis_conv
 from inpaint_ops import random_bbox, bbox2mask, local_patch, brush_stroke_mask
@@ -112,7 +112,8 @@ class InpaintCAModel(Model):
             x = gen_conv(x, 1, 3, 1, activation=None, name='allconv17')
             x = tf.nn.tanh(x)
             x_stage2 = x
-        return x_stage1, x_stage2, offset_flow
+        # return x_stage1, x_stage2, offset_flow
+        return x_stage1, x_stage2, None
 
     def build_sn_patch_gan_discriminator(self, x, reuse=False, training=True):
         with tf.variable_scope('sn_patch_gan', reuse=reuse):
@@ -266,6 +267,8 @@ class InpaintCAModel(Model):
                 batch_complete]
         else:
             viz_img = [batch_pos, batch_incomplete, batch_complete]
+
+        # Set to None in order to debug for the channel inconsistency.
         if offset_flow is not None:
             viz_img.append(
                 resize(offset_flow, scale=4,

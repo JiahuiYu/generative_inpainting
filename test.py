@@ -3,7 +3,7 @@ import argparse
 import cv2
 import numpy as np
 import tensorflow as tf
-import neuralgym as ng
+from libs.neuralgym import neuralgym as ng
 
 from inpaint_model import InpaintCAModel
 
@@ -27,13 +27,15 @@ if __name__ == "__main__":
     model = InpaintCAModel()
     if FLAGS.filetype == 'image':
         image = cv2.imread(args.image)
+        mask = cv2.imread(args.mask)
     elif FLAGS.filetype == 'npy':
         image = np.load(args.image)
+        mask = np.load(args.mask)
     else:
         raise ValueError('Type error for filetype.')
-    mask = cv2.imread(args.mask)
     # mask = cv2.resize(mask, (0,0), fx=0.5, fy=0.5)
 
+    print("Shape of input & mask:", image.shape, mask.shape)
     assert image.shape == mask.shape
 
     h, w, _ = image.shape
