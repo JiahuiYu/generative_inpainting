@@ -47,7 +47,7 @@
         </style>
 
         <!-- Project Title! -->
-        <title>Inpainting</title>    
+        <title>Generative Image Inpainting</title>    
     </head>
     <body>
         <div class = "container">
@@ -55,7 +55,7 @@
                  <!-- Proejct Title -->
                 <div id="title_description">
                     
-                    <h1>Generative Inpainting</h1>
+                    <h1>Generative Image Inpainting</h1>
                     <p><b>: No worries! AI can remove unwanted objects from your photo.<br>
                     </b></p>
 
@@ -67,7 +67,7 @@
                 <h4>Note</h4>
                 <ul>
                     <li>Results are direct outputs from trained generative neural networks. No post-processing steps are applied.</li>
-                    <li>Model is trained on CelebA-HQ and Places2.</li>
+                    <li>Model is trained on CelebA-HQ and Places2 datasets.</li>
                 </ul>
                 <hr class="solid">
                 <!-- If your project have a input files -->
@@ -88,19 +88,20 @@
                 <div id="explain">
                     <h2>How to use</h2>
                     <ol>
-                        <li>Select a model between Places2 and Celeba.</li>
+                        <li>Select an option between Places2 and CelebA-HQ.</li>
                         <li>Insert an image.</li>
                         <li>Paint a portion you want to remove using the white brush.</li>
                         <li>Click run button and get the result.</li>
                     </ol>
                 </div>
-                <h2>Let's inpainting </h2>
+                <hr class="solid">
+                <h2>Let's remove! </h2>
                 <div id="model" style="margin-top: 10px;">
-                    <p><b>Select Model</b></p>
+                    <p><b>Select a demo option</b></p>
                     <input type="radio" name="models" value="places2" id="places2" checked="checked" style="margin-right: 5px;">
-                    <label>Places2</label> 
-                    <input type="radio" name="models" value="celeba" id="celeba" style="margin-right: 5px; margin-left: 5px;">
-                    <label>Celeba</label>
+                    <label>Places2 (natural, complicated scene images)</label> <br>
+                    <input type="radio" name="models" value="celeba" id="celeba" style="margin-right: 5px;">
+                    <label>CelebA-HQ (face images)</label>
                 </div>
                 <br>
                 <div id = 'inputImage'>
