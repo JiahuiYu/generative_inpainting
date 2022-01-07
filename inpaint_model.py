@@ -4,7 +4,8 @@ import logging
 import cv2
 import neuralgym as ng
 import tensorflow as tf
-from tensorflow.contrib.framework.python.ops import arg_scope
+from tf_slim import arg_scope
+#from tensorflow.contrib.framework.python.ops import arg_scope
 
 from neuralgym.models import Model
 from neuralgym.ops.summary_ops import scalar_summary, images_summary
@@ -42,7 +43,7 @@ class InpaintCAModel(Model):
 
         # two stage network
         cnum = 48
-        with tf.variable_scope(name, reuse=reuse), \
+        with tf.compat.v1.variable_scope(name, reuse=reuse), \
                 arg_scope([gen_conv, gen_deconv],
                           training=training, padding=padding):
             # stage1
@@ -110,7 +111,7 @@ class InpaintCAModel(Model):
         return x_stage1, x_stage2, offset_flow
 
     def build_sn_patch_gan_discriminator(self, x, reuse=False, training=True):
-        with tf.variable_scope('sn_patch_gan', reuse=reuse):
+        with tf.compat.v1.variable_scope('sn_patch_gan', reuse=reuse):
             cnum = 64
             x = dis_conv(x, cnum, name='conv1', training=training)
             x = dis_conv(x, cnum*2, name='conv2', training=training)
@@ -123,7 +124,7 @@ class InpaintCAModel(Model):
 
     def build_gan_discriminator(
             self, batch, reuse=False, training=True):
-        with tf.variable_scope('discriminator', reuse=reuse):
+        with tf.compat.v1.variable_scope('discriminator', reuse=reuse):
             d = self.build_sn_patch_gan_discriminator(
                 batch, reuse=reuse, training=training)
             return d
@@ -162,8 +163,8 @@ class InpaintCAModel(Model):
         # apply mask and complete image
         batch_complete = batch_predicted*mask + batch_incomplete*(1.-mask)
         # local patches
-        losses['ae_loss'] = FLAGS.l1_loss_alpha * tf.reduce_mean(tf.abs(batch_pos - x1))
-        losses['ae_loss'] += FLAGS.l1_loss_alpha * tf.reduce_mean(tf.abs(batch_pos - x2))
+        losses['ae_loss'] = FLAGS.l1_loss_alpha * tf.reduce_mean(input_tensor=tf.abs(batch_pos - x1))
+        losses['ae_loss'] += FLAGS.l1_loss_alpha * tf.reduce_mean(input_tensor=tf.abs(batch_pos - x2))
         if summary:
             scalar_summary('losses/ae_loss', losses['ae_loss'])
             if FLAGS.guided:
@@ -176,7 +177,7 @@ class InpaintCAModel(Model):
             if offset_flow is not None:
                 viz_img.append(
                     resize(offset_flow, scale=4,
-                           func=tf.image.resize_bilinear))
+                           func=tf.compat.v1.image.resize_bilinear))
             images_summary(
                 tf.concat(viz_img, axis=2),
                 'raw_incomplete_predicted_complete', FLAGS.viz_max_out)
@@ -206,10 +207,10 @@ class InpaintCAModel(Model):
         losses['g_loss'] = FLAGS.gan_loss_alpha * losses['g_loss']
         if FLAGS.ae_loss:
             losses['g_loss'] += losses['ae_loss']
-        g_vars = tf.get_collection(
-            tf.GraphKeys.TRAINABLE_VARIABLES, 'inpaint_net')
-        d_vars = tf.get_collection(
-            tf.GraphKeys.TRAINABLE_VARIABLES, 'discriminator')
+        g_vars = tf.compat.v1.get_collection(
+            tf.compat.v1.GraphKeys.TRAINABLE_VARIABLES, 'inpaint_net')
+        d_vars = tf.compat.v1.get_collection(
+            tf.compat.v1.GraphKeys.TRAINABLE_VARIABLES, 'discriminator')
         return g_vars, d_vars, losses
 
     def build_infer_graph(self, FLAGS, batch_data, bbox=None, name='val'):
@@ -254,7 +255,7 @@ class InpaintCAModel(Model):
         if offset_flow is not None:
             viz_img.append(
                 resize(offset_flow, scale=4,
-                       func=tf.image.resize_bilinear))
+                       func=tf.compat.v1.image.resize_bilinear))
         images_summary(
             tf.concat(viz_img, axis=2),
             name+'_raw_incomplete_complete', FLAGS.viz_max_out)
