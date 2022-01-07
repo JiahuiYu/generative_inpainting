@@ -56,10 +56,10 @@ if __name__ == "__main__":
             static_inpainted_images = model.build_static_infer_graph(
                 FLAGS, static_images, name='static_view/%d' % i)
     # training settings
-    lr = tf.get_variable(
+    lr = tf.compat.v1.get_variable(
         'lr', shape=[], trainable=False,
-        initializer=tf.constant_initializer(1e-4))
-    d_optimizer = tf.train.AdamOptimizer(lr, beta1=0.5, beta2=0.999)
+        initializer=tf.compat.v1.constant_initializer(1e-4))
+    d_optimizer = tf.compat.v1.train.AdamOptimizer(lr, beta1=0.5, beta2=0.999)
     g_optimizer = d_optimizer
     # train discriminator with secondary trainer, should initialize before
     # primary trainer.
@@ -96,7 +96,7 @@ if __name__ == "__main__":
         ng.callbacks.WeightsViewer(),
         ng.callbacks.ModelRestorer(trainer.context['saver'], dump_prefix=FLAGS.model_restore+'/snap', optimistic=True),
         ng.callbacks.ModelSaver(FLAGS.train_spe, trainer.context['saver'], FLAGS.log_dir+'/snap'),
-        ng.callbacks.SummaryWriter((FLAGS.val_psteps//1), trainer.context['summary_writer'], tf.summary.merge_all()),
+        ng.callbacks.SummaryWriter((FLAGS.val_psteps//1), trainer.context['summary_writer'], tf.compat.v1.summary.merge_all()),
     ])
     # launch training
     trainer.train()

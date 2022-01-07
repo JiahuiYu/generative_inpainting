@@ -33,25 +33,25 @@ if __name__ == "__main__":
     # os.environ['CUDA_VISIBLE_DEVICES'] =''
     args = parser.parse_args()
 
-    sess_config = tf.ConfigProto()
+    sess_config = tf.compat.v1.ConfigProto()
     sess_config.gpu_options.allow_growth = True
-    sess = tf.Session(config=sess_config)
+    sess = tf.compat.v1.Session(config=sess_config)
 
     model = InpaintCAModel()
-    input_image_ph = tf.placeholder(
+    input_image_ph = tf.compat.v1.placeholder(
         tf.float32, shape=(1, args.image_height, args.image_width*2, 3))
     output = model.build_server_graph(FLAGS, input_image_ph)
     output = (output + 1.) * 127.5
     output = tf.reverse(output, [-1])
     output = tf.saturate_cast(output, tf.uint8)
-    vars_list = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES)
+    vars_list = tf.compat.v1.get_collection(tf.compat.v1.GraphKeys.GLOBAL_VARIABLES)
     assign_ops = []
     for var in vars_list:
         vname = var.name
         from_name = vname
-        var_value = tf.contrib.framework.load_variable(
+        var_value = tf.train.load_variable(
             args.checkpoint_dir, from_name)
-        assign_ops.append(tf.assign(var, var_value))
+        assign_ops.append(tf.compat.v1.assign(var, var_value))
     sess.run(assign_ops)
     print('Model loaded.')
 
